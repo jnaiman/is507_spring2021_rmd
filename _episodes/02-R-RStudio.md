@@ -402,13 +402,31 @@ The top few lines of the file look like:
 
 
 ~~~
-Year,Crop,Nitrogen,Phosphate,Potash
-1964,Corn,1623,1053,829
-1965,Corn,2151,1336,1204
-1966,Corn,2596,1626,1513
-1967,Corn,3044,1857,1750
+Warning in file(file, "rt"): cannot open file 'data/fertilizer_use.csv': No such
+file or directory
 ~~~
-{: .output}
+{: .warning}
+
+
+
+~~~
+Error in file(file, "rt"): cannot open the connection
+~~~
+{: .error}
+
+
+
+~~~
+Error in is.data.frame(x): object 'tmp' not found
+~~~
+{: .error}
+
+
+
+~~~
+Warning in rm(tmp): object 'tmp' not found
+~~~
+{: .warning}
 
 It can be opened in Excel if you want to get a quick look at it that way, or we can dive straight into looking at it in R.
 

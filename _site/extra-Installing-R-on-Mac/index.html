@@ -1,0 +1,492 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2021-05-10 20:59:55 -0500">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/syntax.css" />
+
+    
+
+
+
+    <!-- Favicons for everyone -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/favicons/dc/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/favicons/dc/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/favicons/dc/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/favicons/dc/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/favicons/dc/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/favicons/dc/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/favicons/dc/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/favicons/dc/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../assets/favicons/dc/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="Data Carpentry - IS 507 -- Data, Stats, and Info"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="../assets/favicons/dc/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="../assets/favicons/dc/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="../assets/favicons/dc/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="../assets/favicons/dc/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="../assets/favicons/dc/mstile-310x310.png" />
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+  <title>
+  Installing R, RStudio, and QGIS on a Mac &ndash; IS 507 -- Data, Stats, and Info
+  </title>  
+
+  </head>
+  <body>
+
+    
+
+
+<div class="panel panel-default life-cycle">
+  <div id="life-cycle" class="panel-body beta">
+    This lesson is being piloted (Beta version)
+  </div>
+</div>
+
+
+
+
+    <div class="container">
+      
+
+
+
+
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="http://datacarpentry.org" class="pull-left">
+        <img class="navbar-logo" src="../assets/img/dc-icon-black.svg" alt="Data Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="../">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        
+	
+        <li><a href="../setup.html">Setup</a></li>
+
+	<!--
+        <li><a href="../CODE_OF_CONDUCT.html">Code of Conduct</a></li>-->
+
+        
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lessons <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../01-Course_Introduction/index.html">Welcome to Data Harvesting for Agriculture!</a></li>
+            
+            <li><a href="../02-R-RStudio/index.html">Introduction to Programming with R and RStudio</a></li>
+            
+	    <li role="separator" class="divider"></li>
+            <li><a href="../aio/index.html">All in one page (Beta)</a></li>
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../reference.html">Reference</a></li>
+            
+            <li><a href="../discuss/index.html">Discussion</a></li>
+            
+            <li><a href="../extra-Installing-R-on-Mac/index.html">Installing R, RStudio, and QGIS on a Mac</a></li>
+            
+            <li><a href="../extra-Installing-R-on-Windows/index.html">Installing R, RStudio, and QGIS on Windows</a></li>
+            
+            <li><a href="../guide/index.html">Instructor Notes</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../LICENSE.md">License</a></li>
+	
+	
+	<li><a href="/edit//_extras/extra-Installing-R-on-Mac.Rmd" data-checker-ignore>Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	
+	
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 class="maintitle"><a href="../">IS 507 -- Data, Stats, and Info</a>: Installing R, RStudio, and QGIS on a Mac</h1>
+
+<article>
+<h1 id="installing-r-and-rstudio">Installing R and RStudio</h1>
+
+<h2 id="before-you-start">Before you start</h2>
+
+<ol>
+  <li>Check which version of Mac OS you have. To do this, click on the Apple icon on the top-left of your screen, then click “About This Mac”. A little window should pop up with version information.</li>
+</ol>
+
+<p><img src="../figure/which_mac_version.png" width="50%" /></p>
+
+<ol>
+  <li>Make sure that you have about 500 MB of free space on your machine. We will need this space to install both R and RStudio, and when the program installs the compressed files expand to take much more space.</li>
+</ol>
+
+<h2 id="installing-r">Installing R</h2>
+
+<ol>
+  <li>
+    <p>Go to <a href="https://cran.r-project.org/bin/macosx/">this website</a>.</p>
+  </li>
+  <li>
+    <p>If your mac is OS X 10.11 and higher (this should be the case for most of you), click the <code class="language-plaintext highlighter-rouge">R-3.6.2.pkg</code> link. If your mac is OS X 10.9 or 10.10, click the <code class="language-plaintext highlighter-rouge">R-3.3.3.pkg</code> link.</p>
+  </li>
+  <li>
+    <p>After clicking on the link, the file (package installer) will be downloaded onto your computer. Once the file has been downloaded, click on the <code class="language-plaintext highlighter-rouge">.pkg</code> file that downloads in your default Download folder and walk through the installation process. Accept the default options for now.</p>
+  </li>
+</ol>
+
+<p>R is now <strong>installed</strong> on your computer.</p>
+
+<h3 id="testing-r">Testing R</h3>
+
+<ol>
+  <li>Double-click on the R icon in the Applications folder:</li>
+</ol>
+
+<p><img src="../figure/applications_folder_r.png" width="50%" /></p>
+
+<p>A window titled “R Console” should pop up:</p>
+
+<p><img src="../figure/R_Console.png" width="40%" /></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">&gt;</code> character is called the prompt and is the place where we enter commands for the program to interpret. For instance, if you type <code class="language-plaintext highlighter-rouge">25+5</code> followed by the return/enter key, you will see:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="m">25+5</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 30
+</code></pre></div></div>
+
+<p><img src="../figure/R_console_using.png" width="50%" /></p>
+
+<ol>
+  <li>To quit R, call the quit function by going to <code class="language-plaintext highlighter-rouge">File -&gt; Quit R</code>.</li>
+</ol>
+
+<p>R will ask you if you want to save your work:</p>
+
+<p><img src="../figure/closing_r_dontSAve.png" width="50%" /></p>
+
+<p>Click on “Don’t Save”. You have now left R.</p>
+
+<p>We are not going to use R this way often, as we will use an integrated environment called RStudio.</p>
+
+<h2 id="installing-rstudio">Installing RStudio</h2>
+
+<ol>
+  <li>
+    <p>Go to <a href="https://rstudio.com/products/rstudio/download/">this website</a>.</p>
+  </li>
+  <li>Click on the <code class="language-plaintext highlighter-rouge">Free</code> link (note: there are paid options, but we won’t be using those!). The file download will begin.
+    <ul>
+      <li>If you have an older computer, you <em>may</em> have to find your installer on <a href="https://support.rstudio.com/hc/en-us/articles/206569407-Older-Versions-of-RStudio">this page</a>, but feel free to contact us about that!</li>
+    </ul>
+  </li>
+  <li>Once the file has been downloaded, click on it. A window should pop up:</li>
+</ol>
+
+<p><img src="../figure/Rstudio_download.png" width="50%" /></p>
+
+<p>Click on the RStudio icon and drag it into the Applications folder.</p>
+
+<p>RStudio is now <strong>installed</strong> on your computer.</p>
+
+<p><strong>Note</strong>: For RStudio to work, R needs to be installed first.</p>
+
+<h3 id="testing-rstudio">Testing RStudio</h3>
+
+<ol>
+  <li>Double-click on the RStudio icon in the Applications:</li>
+</ol>
+
+<p><img src="../figure/applications_folder.png" width="50%" /></p>
+
+<p>A window titled “RStudio” should pop up, looking something like this:</p>
+
+<p><img src="../figure/rstudio_opened.png" width="75%" /></p>
+
+<ol>
+  <li>Just as in R, the <code class="language-plaintext highlighter-rouge">&gt;</code> character in the Console window is where we enter commands for the program to interpret.  You can try entering something there and then hitting the <code class="language-plaintext highlighter-rouge">Enter</code> key to see:</li>
+</ol>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="m">25+5</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 30
+</code></pre></div></div>
+
+<ol>
+  <li>To exit RStudio, click “RStudio” in the menu bar, then click “Quit RStudio”. Alternatively, use the <code class="language-plaintext highlighter-rouge">Cmd-Q</code> shortcut. If prompted to save the workspace, do not save it.</li>
+</ol>
+
+<h2 id="installing-the-geospatial-and-federal-data-packages">Installing the geospatial and federal data packages</h2>
+
+<p>When RStudio is open and working, create a new R script file.</p>
+
+<p>Here’s where to make a new script:</p>
+
+<p><img src="../figure/mac_open_new_script.png" width="50%" /></p>
+
+<p>When you open a new script, your RStudio will now look like this (without the red labels):</p>
+
+<p><img src="../figure/rstudio_with_script_window_names.png" width="75%" /></p>
+
+<p>Once this is done copy the following into your script window:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">source</span><span class="p">(</span><span class="s1">'https://raw.githubusercontent.com/data-carpentry-for-agriculture/trial-lesson/gh-pages/_episodes_rmd/package_install_script.R'</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>And follow it by pressing the <code class="language-plaintext highlighter-rouge">Source</code> button.  You might get some red words showing up, and that is normal!  If you see any red with the word <code class="language-plaintext highlighter-rouge">Error</code> in it, this may indicate a problem however.</p>
+
+<p>This looks like:
+<img src="../figure/sourceInstallScript.png" width="75%" /></p>
+
+<ul>
+  <li>If the red stop sign in the top right corner of the console is still highlighted, an installation process is still running.</li>
+  <li>If you see a blue &gt; in the console , you’re ready to go.</li>
+</ul>
+
+<p>This action is “sourcing” i.e. running a bit of code from the internet that installs a bunch of libraries that provide functionality that is not included with standard R installation.</p>
+
+<p>Alternatively, you can copy the following into the script window or console:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"ggplot2"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"rgdal"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"dplyr"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"sf"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"gstat"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"tmap"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"measurements"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"daymetr"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"FedData"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"lubridate"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"raster"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"data.table"</span><span class="p">)</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"broom"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="checking-that-the-packages-installed-correctly">Checking that the packages installed correctly</h3>
+
+<p>We have a test script to make sure all packages have installed correctly.  To run this test script, we will “Source” it’s location like we did above for the package installation script.</p>
+
+<p>In your script window you can type in:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">source</span><span class="p">(</span><span class="s1">'https://raw.githubusercontent.com/data-carpentry-for-agriculture/trial-lesson/gh-pages/_episodes_rmd/functions.R'</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>… and then press the <code class="language-plaintext highlighter-rouge">Source</code> button.  This will look like:</p>
+
+<p><img src="../figure/firstSourceFunctions.png" width="75%" /></p>
+
+<p>Next, we will run the test script to see what happens.  When we run this script, it will create a new directory called <code class="language-plaintext highlighter-rouge">WorkingDir</code> to save all of our test images in.  This directory will also be used to store data for this workshop.  (You can change the default creation location for <code class="language-plaintext highlighter-rouge">WorkingDir</code> by calling the function as <code class="language-plaintext highlighter-rouge">run_workshop_test(workingDir='YOUR DIR')</code>, shown below is how this looks for the default).</p>
+
+<p>Once we press the <code class="language-plaintext highlighter-rouge">Source</code> some things will download and be calculated, and a new file called <code class="language-plaintext highlighter-rouge">WorkingDir</code> will show up in our file list:</p>
+
+<p><img src="../figure/install_create_wd.png" width="80%" /></p>
+
+<p>To check that all our images have been created, we can click on <code class="language-plaintext highlighter-rouge">WorkingDir</code> in our <strong>File</strong> list in RStudio (see #2 in above figure), and then navigate to <code class="language-plaintext highlighter-rouge">test_images</code>:</p>
+
+<p><img src="../figure/intoTestimages.png" width="80%" /></p>
+
+<p>Once you open this file, you should see several images:</p>
+
+<p><img src="../figure/open_image_folder.png" width="75%" /></p>
+
+<p>You can click on each of these to open them up.  Here is a grid of what each one should look like:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center"> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">plot1_ggplot2.jpg <br /> <img src="../figure/test_images/plot1_ggplot2.jpg" width="250px" /></td>
+      <td style="text-align: center">plot2_sf.jpg <br /> <img src="../figure/test_images/plot2_sf.jpg" width="250px" /></td>
+      <td style="text-align: center">plot3_gstat.jpg <br /> <img src="../figure/test_images/plot3_gstat.jpg" width="250px" /></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">plot4_tmap.jpg <br /> <img src="../figure/test_images/plot4_tmap.jpg" width="250px" /></td>
+      <td style="text-align: center">plot5_daymetr.jpg <br /> <img src="../figure/test_images/plot5_daymetr.jpg" width="250px" /></td>
+      <td style="text-align: center">plot6_ssurgo.jpg <br /> <img src="../figure/test_images/plot6_ssurgo.jpg" width="250px" /></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">plot7_raster.jpg <br /> <img src="../figure/test_images/plot7_raster.jpg" width="250px" /></td>
+      <td style="text-align: center">plot8_datatable.jpg <br /> <img src="../figure/test_images/plot8_datatable.jpg" width="250px" /></td>
+      <td style="text-align: center">plot9_broom.jpg <br /> <img src="../figure/test_images/plot9_broom.jpg" width="250px" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="download-data-for-this-workshop">Download data for this workshop</h2>
+
+<p>The final thing we need to do for this workshop is to download the data.  To do this, we need to run one more function.  To avoid re-running our test function, we can put a little <code class="language-plaintext highlighter-rouge">#</code> in front of this line.  So the code in our script will now look like:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">source</span><span class="p">(</span><span class="s1">'https://raw.githubusercontent.com/data-carpentry-for-agriculture/trial-lesson/gh-pages/_episodes_rmd/functions.R'</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">#run_workshop_test()</span><span class="w">
+
+</span><span class="n">download_workshop_data</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p>If we navigate to our <code class="language-plaintext highlighter-rouge">WorkingDir</code> directory we will see that a folder called <code class="language-plaintext highlighter-rouge">data</code> and a script called <code class="language-plaintext highlighter-rouge">functions.R</code> have now appeared.  This process looks like:</p>
+
+<p><img src="../figure/downloadData.png" width="80%" /></p>
+
+<h2 id="download-and-install-qgis">Download and Install QGIS</h2>
+
+<p>To download QGIS, visit <a href="https://qgis.org/en/site/forusers/download.html">the QGIS download site</a> and choose one of the standalone installers. Be sure to check your Mac version to download the correct package.</p>
+
+<p>Note: This is a ~1Gb file, so it’s likely to take some time to download.</p>
+
+<p>You should see a new icon in your Applications folder:</p>
+
+<p><img src="../figure/qgis_macInstall_applications.png" width="50%" /></p>
+
+<p>When you double click QGIS should open up:</p>
+
+<p><img src="../figure/qgis_macInstall_opened.png" width="75%" /></p>
+
+<p>Citation: R/RStudio install structure from <a href="https://github.com/kjytay">Kenneth Tay</a></p>
+
+</article>
+
+      
+      
+
+
+
+
+
+
+<footer>
+  <div class="row">
+    <div class="col-md-6 copyright" align="left">
+	<!--Licensed under <a href="">CC-BY 4.0</a> 2018–2021
+	by <a href="https://digitalag.illinois.edu/">Center for Digital Agriculture</a>-->
+    </div>
+    <div class="col-md-6 help-links" align="right">
+	
+	
+	<a href="/edit//_extras/extra-Installing-R-on-Mac.Rmd" data-checker-ignore>Edit on GitHub</a>
+	
+	
+	/
+	<a href="/blob//CONTRIBUTING.md" data-checker-ignore>Contributing</a>
+	/
+	<a href="/">Source</a>
+	/
+	<a href="/blob//CITATION" data-checker-ignore>Cite</a>
+	/
+	<a href="mailto:">Contact</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" align="center">
+      Using <a href="https://github.com/carpentries/styles/">The Carpentries style</a>
+      version <a href="https://github.com/carpentries/styles/releases/tag/v9.5.3">9.5.3</a>.
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>

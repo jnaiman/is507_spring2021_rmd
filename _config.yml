@@ -5,7 +5,7 @@
 carpentry: "dc"
 
 # Overall title for pages.
-title: "Data Harvesting for Agriculture"
+title: "IS 507 -- Data, Stats, and Info"
 
 # Life cycle stage of the lesson
 # possible values: "pre-alpha", "alpha", "beta", "stable"
@@ -27,7 +27,7 @@ kind: "lesson"
 repository: <USERNAME>/<PROJECT>
 
 # Email address, no mailto:
-email: "team@carpentries.org"
+email: ""
 
 # Sites.
 amy_site: "https://amy.software-carpentry.org/workshops"
@@ -47,9 +47,9 @@ workshop_repo: "https://github.com/carpentries/workshop-template"
 workshop_site: "https://carpentries.github.io/workshop-template"
 
 # Surveys.
-pre_survey: "https://www.surveymonkey.com/r/swc_pre_workshop_v1?workshop_id="
-post_survey: "https://www.surveymonkey.com/r/swc_post_workshop_v1?workshop_id="
-training_post_survey: "https://www.surveymonkey.com/r/post-instructor-training"
+pre_survey: ""
+post_survey: ""
+training_post_survey: ""
 
 # Start time in minutes (0 to be clock-independent, 540 to show a start at 09:00 am).
 start_time: 0
