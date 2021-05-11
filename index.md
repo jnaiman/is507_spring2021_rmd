@@ -10,8 +10,7 @@ If you see any bugs or errors please issue a PR [by checking out the GitHub sour
 > ## Getting Started
 >
 >
-> To get started, follow the directions in the "[Setup](setup.html)" tab to
-> download data to your computer and follow any installation instructions.
+> To find required reading and to get started, follow the links and installation directions in the "[Setup](setup.html)" tab.
 >
 > #### Prerequisites
 >

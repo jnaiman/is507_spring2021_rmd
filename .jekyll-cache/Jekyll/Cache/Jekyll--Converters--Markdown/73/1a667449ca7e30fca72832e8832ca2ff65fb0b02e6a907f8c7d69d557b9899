@@ -1,0 +1,12 @@
+I"\<p>Our main motivation for this course is to try to answer the question:  “How well can we know anything, really?”</p>
+
+<p>In particular, some of the things we want to know are:</p>
+<ul>
+  <li>What kinds of questions can we ask with data?</li>
+  <li>How accurately can we answer those questions from a particular
+dataset? How does this depend on features of this dataset (e.g.
+how data was procured)?</li>
+  <li>How can we make predictions from collected data? What is the “accuracy” of those predictions?</li>
+  <li>How can we use computational tools to answer statistical questions?</li>
+</ul>
+:ET

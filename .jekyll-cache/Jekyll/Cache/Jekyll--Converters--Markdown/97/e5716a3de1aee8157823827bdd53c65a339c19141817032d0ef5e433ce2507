@@ -1,19 +1,15 @@
----
-layout: page
-title: Setup
----
+I"U
+<h2 id="setup-instructions">Setup Instructions</h2>
 
-## Setup Instructions
+<p>You will need to have both <strong>R</strong> and <strong>RStudio</strong> installed.</p>
 
-You will need to have both **R** and **RStudio** installed.
+<p><strong>R</strong> and <strong>RStudio</strong> are separate programs. R is the underlying statistical computing software, but using R alone is more difficult and obscure. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You need to install R before you install RStudio. Once installed, because RStudio is an IDE, RStudio will run R in the background.  You do not need to run it separately.</p>
 
-**R** and **RStudio** are separate programs. R is the underlying statistical computing software, but using R alone is more difficult and obscure. RStudio is a graphical integrated development environment (IDE) that makes using R much easier and more interactive. You need to install R before you install RStudio. Once installed, because RStudio is an IDE, RStudio will run R in the background.  You do not need to run it separately.
+<p>R - links to install R can be found <a href="https://www.r-project.org/">here</a>.</p>
 
-R - links to install R can be found [here](https://www.r-project.org/).
+<p>RStudio (optional, but highly recommended) - links ot download can be found <a href="https://rstudio.com/products/rstudio/download/">here</a>. There are paid version, but we will be using the free version, so make sure you download that one.</p>
 
-RStudio (optional, but highly recommended) - links ot download can be found [here](https://rstudio.com/products/rstudio/download/). There are paid version, but we will be using the free version, so make sure you download that one.
-
-## Required Textbooks
+<h2 id="required-textbooks">Required Textbooks</h2>
 
 <ol>
     <li> OpenIntro Statistics, 4th Edition </li>
@@ -31,10 +27,11 @@ RStudio (optional, but highly recommended) - links ot download can be found [her
         <li> Or download the PDF directly <a href="https://statlearning.com/ISLR%20Seventh%20Printing.pdf">here</a>.</li>
     </ul>
 </ol>
-
-## Optional Textbooks for second half of course
+<p><br /></p>
+<p><strong>Optional Textbooks for second half of course:</strong></p>
 <ol>
     <li>STOR 390: Introduction to Data Science: slides and code labs for KNN and CV - GitHub repo available <a href="https://idc9.github.io/stor390/">here</a>.</li>
     <li>Montana's Intermediate Statistics with R: textbook with extensive R examples - PDF available <a href="https://scholarworks.montana.edu/xmlui/bitstream/handle/1/2999/Greenwood-Book-v2.2.pdf?sequence=3&amp;isAllowed=y">here</a>, and more info about
         this book available <a href="https://scholarworks.montana.edu/xmlui/handle/1/2999">here</a>.&nbsp; Many topics covered, we'll focus on single and multiple linear regression and p-values.</li>
 </ol>
+:ET

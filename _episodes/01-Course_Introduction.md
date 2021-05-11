@@ -4,6 +4,9 @@
 title: "Course Intro & Motivation, Intro to R"
 include_overview: true
 week: 1
+readings:
+ - This week will be an introduction to the course topics & the R programming language.
+ - If we have time we'll start discussing topics from OIS 1.1, 1.2, 1.3 & 2.1.
 questions:
  - What is R and RStudio and how can we use them to read in data and make plots?
  - What are some ways we can summarize a dataset?
@@ -18,5 +21,12 @@ keypoints:
 source: Rmd
 ---
 
-Our motivation for creating this workshop is the recent, rapid increase in the volume of data produced on farms and the use of such data for decision making by farmers.  This material doesn’t claim to replace the data analysis services that are currently provided by the agricultural technology industry, but rather to arm you with knowledge to help you better communicate with such service providers.  Moreover, we believe that your data will be more valuable to you if you have some ability to analyze it yourself, regardless of whether you continue to do business with a particular company in the future.
+Our main motivation for this course is to try to answer the question:  "How well can we know anything, really?"
 
+In particular, some of the things we want to know are:
+ * What kinds of questions can we ask with data?
+ * How accurately can we answer those questions from a particular
+dataset? How does this depend on features of this dataset (e.g.
+how data was procured)?
+ * How can we make predictions from collected data? What is the "accuracy" of those predictions?
+ * How can we use computational tools to answer statistical questions?
