@@ -1,4 +1,4 @@
-I"�<!-- JPN: attribution formatting -->
+I" �<!-- JPN: attribution formatting -->
 <style type="text/css" rel="stylesheet">
 * {.attribution{
      position:absolute;
@@ -53,8 +53,8 @@
   </li>
 </ul>
 
-<p><img src="../figure/1-breakfast.png" width="70%" />
-<span class="attribution"><a href="https://www.flickr.com/photos/11849171@N00/8330968310">“Breakfast”</a> by <a href="https://www.flickr.com/photos/11849171@N00/8330968310">viviandnguyen_</a> is licensed under <a href="https://www.flickr.com/photos/11849171@N00/8330968310">CC BY-SA 2.0</a></span></p>
+<!--<img src='../figure/1-breakfast.png' width="70%">-->
+<p><span class="attribution"><a href="https://www.flickr.com/photos/11849171@N00/8330968310">“Breakfast”</a> by <a href="https://www.flickr.com/photos/11849171@N00/8330968310">viviandnguyen_</a> is licensed under <a href="https://www.flickr.com/photos/11849171@N00/8330968310">CC BY-SA 2.0</a></span></p>
 
 <h2 id="intro-to-r-and-rstudio">Intro to R and RStudio</h2>
 
@@ -71,7 +71,7 @@
   <p>If you’re running R Studio from a copy made from the USB stick, then the first time you launch R Studio, you’ll be asked where your installation of R is located.</p>
   <ol>
     <li>Choose the “Choose a specific version of R” item next to the large text box.
-<img src="../figure/1-Win-Rstudio-firstlaunch.png" width="70%" /></li>
+<!--<img src="../figure/1-Win-Rstudio-firstlaunch.png" width="70%">--></li>
     <li>Use the <strong>Browse</strong> button to navigate to:
       <ul>
         <li><strong>DataHarvestingWin/ProgramFiles/R/R-3.6.2/bin/</strong></li>

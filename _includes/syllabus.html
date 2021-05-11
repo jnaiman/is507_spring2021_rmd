@@ -14,6 +14,7 @@
     {% if episode.start %}{% assign multiday = true %}{% break %}{% endif %}
   {% endfor %}
   {% assign current = site.start_time %}
+  {% assign currentWeek = 1 %}
 
   <table class="table table-striped">
   <tr>
@@ -23,6 +24,7 @@
     <td class="col-md-7">Download files required for the lesson</td>
   </tr>
   {% for episode in site.episodes %}
+    {% assign currentWeek = episode.week %}
     {% if episode.start %} {% comment %} Starting a new day? {% endcomment %}
       {% assign day = day | plus: 1 %}
       {% if day > 1 %} {% comment %} If about to start day 2 or later, show finishing time for previous day {% endcomment %}
@@ -30,7 +32,8 @@
         {% assign minutes = current | modulo: 60 %}
         <tr>
           {% if multiday %}<td class="col-md-1"></td>{% endif %}
-          <td class="{% if multiday %}col-md-1{% else %}col-md-2{% endif %}">{% if hours < 10 %}0{% endif %}{{ hours }}:{% if minutes < 10 %}0{% endif %}{{ minutes }}</td>
+          <!--<td class="{% if multiday %}col-md-1{% else %}col-md-2{% endif %}">{% if hours < 10 %}0{% endif %}{{ hours }}:{% if minutes < 10 %}0{% endif %}{{ minutes }}</td>-->
+          <td class="{% if multiday %}col-md-1{% else %}col-md-2{% endif %}">"Week:"{% if minutes < 10 %}0{% endif %}{{ minutes }}</td>
           <td class="col-md-3">Finish</td>
           <td class="col-md-7"></td>
         </tr>
@@ -41,7 +44,7 @@
     {% assign minutes = current | modulo: 60 %}
     <tr>
       {% if multiday %}<td class="col-md-1">{% if episode.start %}Day {{ day }}{% endif %}</td>{% endif %}
-      <td class="{% if multiday %}col-md-1{% else %}col-md-2{% endif %}">{% if hours < 10 %}0{% endif %}{{ hours }}:{% if minutes < 10 %}0{% endif %}{{ minutes }}</td>
+      <td class="{% if multiday %}col-md-1{% else %}col-md-2{% endif %}">Week: {{ currentWeek }}</td>
       <td class="col-md-3">
         {% assign lesson_number = lesson_number | plus: 1 %}
 	{{ lesson_number }}. <a href="{{ relative_root_path }}{{ episode.url }}">{{ episode.title }}</a>

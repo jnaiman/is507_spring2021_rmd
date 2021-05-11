@@ -1,6 +1,7 @@
 ---
 title: "Introduction to Programming with R and RStudio"
 include_overview: true
+week: 2
 questions:
  - What is a program?
  - Why would do we want to use a program?
@@ -55,7 +56,7 @@ In order to make breakfast, you need:
  * A **destination** (where to put the food that’s ready to be consumed)
      * You could put your outputs in your working directory (eat breakfast in your kitchen) or you could send it to another location (put leftovers in the refrigerator)
 
-<img src='../figure/1-breakfast.png' width="70%">
+<!--<img src='../figure/1-breakfast.png' width="70%">-->
 <span class="attribution"><a href="https://www.flickr.com/photos/11849171@N00/8330968310">"Breakfast"</a> by <a href="https://www.flickr.com/photos/11849171@N00/8330968310">viviandnguyen_</a> is licensed under <a href="https://www.flickr.com/photos/11849171@N00/8330968310">CC BY-SA 2.0</a></span>
 
 
@@ -72,7 +73,7 @@ We launch RStudio by double clicking on its icon, as we would with other softwar
 > ## Windows Users:  Click Here for more details
 > If you’re running R Studio from a copy made from the USB stick, then the first time you launch R Studio, you’ll be asked where your installation of R is located.
 > 1. Choose the “Choose a specific version of R” item next to the large text box.
-> <img src="../figure/1-Win-Rstudio-firstlaunch.png" width="70%">
+> <!--<img src="../figure/1-Win-Rstudio-firstlaunch.png" width="70%">-->
 > 2. Use the **Browse** button to navigate to:
 >    * **DataHarvestingWin/ProgramFiles/R/R-3.6.2/bin/**
 >    * and choose **Select Folder**.

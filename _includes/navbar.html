@@ -15,13 +15,15 @@
       </button>
 
       {% comment %} Select what logo to display. {% endcomment %}
+      <!-- JPN: come back here and clean up! -->
       {% if site.carpentry == "swc" %}
       <a href="{{ site.swc_site }}" class="pull-left">
         <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/swc-icon-blue.svg %}" alt="Software Carpentry logo" />
       </a>
       {% elsif site.carpentry == "dc" %}
       <a href="{{ site.dc_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/dc-icon-black.svg %}" alt="IS507 logo" />
+        <!--<img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/dc-icon-black.svg %}" alt="IS507 logo" />-->
+        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/is-icon-blue.svg %}" alt="IS507 logo" />
       </a>
       {% elsif site.carpentry == "lc" %}
       <a href="{{ site.lc_site }}" class="pull-left">
