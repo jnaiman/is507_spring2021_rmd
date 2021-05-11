@@ -38,3 +38,6 @@ RStudio (optional, but highly recommended) - links ot download can be found [her
     <li>Montana's Intermediate Statistics with R: textbook with extensive R examples - PDF available <a href="https://scholarworks.montana.edu/xmlui/bitstream/handle/1/2999/Greenwood-Book-v2.2.pdf?sequence=3&amp;isAllowed=y">here</a>, and more info about
         this book available <a href="https://scholarworks.montana.edu/xmlui/handle/1/2999">here</a>.&nbsp; Many topics covered, we'll focus on single and multiple linear regression and p-values.</li>
 </ol>
+
+## Pre- and Co-requisite
+IS430(452) Foundations of Information Processing is strongly recommended as a prerequisite. A highly motivated student could pass this course without IS452 (so the prerequisite is not enforced), but programming will not be covered in this course. Students who have not completed an introductory course on statistics will need to come up to speed quickly on material covered early in the semester.

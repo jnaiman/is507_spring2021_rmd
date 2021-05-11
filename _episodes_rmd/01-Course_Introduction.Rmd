@@ -19,6 +19,22 @@ keypoints:
 source: Rmd
 ---
 
+
+```{r setup, include=FALSE}
+source("../bin/chunk-options.R")
+```
+<!-- JPN: attribution formatting -->
+<style type="text/css" rel="stylesheet">
+* {.attribution{
+     position:absolute;
+     bottom:0;
+     right:0;
+     font-size:0.5em
+ }}
+</style>
+
+# Why take Statistics as an Information Scientist?
+
 Our main motivation for this course is to try to answer the question:  "How well can we know anything, really?"
 
 In particular, some of the things we want to know are:
@@ -28,3 +44,9 @@ dataset? How does this depend on features of this dataset (e.g.
 how data was procured)?
  * How can we make predictions from collected data? What is the "accuracy" of those predictions?
  * How can we use computational tools to answer statistical questions?
+
+# Plotting Data with R
+
+We'll be grabbing some data from [Spurious Correlations](http://www.tylervigen.com/spurious-correlations) which has a lot of great examples of ways to "lie" with data by showing correlations and implying causation.  In particular we'll be looking at the relationship between cheese consumption and engineering Ph.D.'s awarded per year:
+
+<img src='../figure/chart.png' width="70%">
