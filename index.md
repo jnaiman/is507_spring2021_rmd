@@ -3,7 +3,7 @@ layout: lesson
 root: .
 ---
 
-These are the course materials for IS507 (previously IS542) at the iSchool, University of Illinois, Urbana-Champaign.
+These are the course materials for IS507 (previously IS542) at the [iSchool, University of Illinois, Urbana-Champaign](https://ischool.illinois.edu/).
 
 If you see any bugs or errors please issue a PR -- always looking to make things better!
 
