@@ -19,7 +19,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2021-05-11 16:44:42 -0500">
+    <meta http-equiv="last-modified" content="2021-05-11 17:33:14 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -132,8 +132,6 @@
             
             <li><a href="../01-Course_Introduction/index.html">Course Intro & Motivation, Intro to R</a></li>
             
-            <li><a href="../02-R-RStudio/index.html">Introduction to Programming with R and RStudio</a></li>
-            
 	    <li role="separator" class="divider"></li>
             <li><a href="../aio/index.html">All in one page (Beta)</a></li>
           </ul>
@@ -208,7 +206,7 @@
   <div class="col-xs-1">
     <h3 class="text-right">
       
-      <a href="../02-R-RStudio/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
       
     </h3>
   </div>
@@ -316,11 +314,241 @@ how data was procured)?</li>
   <li>How can we use computational tools to answer statistical questions?</li>
 </ul>
 
-<h1 id="plotting-data-with-r">Plotting Data with R</h1>
+<h1 id="reading-and-plotting-data-with-r">Reading and Plotting Data with R</h1>
 
 <p>We’ll be grabbing some data from <a href="http://www.tylervigen.com/spurious-correlations">Spurious Correlations</a> which has a lot of great examples of ways to “lie” with data by showing correlations and implying causation.  In particular we’ll be looking at the relationship between cheese consumption and engineering Ph.D.’s awarded per year:</p>
 
 <p><img src="../figure/chart.png" width="70%" /></p>
+
+<p>To remake this plot, we need to first have the data to do so!  We’ll enter this “by hand” by putting the data in with vectors, which in R are denoted by a <code class="language-plaintext highlighter-rouge">c()</code>:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">year</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2000</span><span class="p">,</span><span class="w"> </span><span class="m">2001</span><span class="p">,</span><span class="w"> </span><span class="m">2002</span><span class="p">,</span><span class="w"> </span><span class="m">2003</span><span class="p">,</span><span class="w"> </span><span class="m">2004</span><span class="p">,</span><span class="w"> </span><span class="m">2005</span><span class="p">,</span><span class="w"> </span><span class="m">2006</span><span class="p">,</span><span class="w"> </span><span class="m">2007</span><span class="p">,</span><span class="w"> </span><span class="m">2008</span><span class="p">,</span><span class="w"> </span><span class="m">2009</span><span class="p">)</span><span class="w">
+</span><span class="n">mozz</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">9.3</span><span class="p">,</span><span class="w"> </span><span class="m">9.7</span><span class="p">,</span><span class="w"> </span><span class="m">9.7</span><span class="p">,</span><span class="w"> </span><span class="m">9.7</span><span class="p">,</span><span class="w"> </span><span class="m">9.9</span><span class="p">,</span><span class="w"> </span><span class="m">10.2</span><span class="p">,</span><span class="w"> </span><span class="m">10.5</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="m">10.6</span><span class="p">,</span><span class="w"> </span><span class="m">10.6</span><span class="p">)</span><span class="w">
+</span><span class="n">edocs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">480</span><span class="p">,</span><span class="w"> </span><span class="m">501</span><span class="p">,</span><span class="w"> </span><span class="m">540</span><span class="p">,</span><span class="w"> </span><span class="m">552</span><span class="p">,</span><span class="w"> </span><span class="m">547</span><span class="p">,</span><span class="w"> </span><span class="m">622</span><span class="p">,</span><span class="w"> </span><span class="m">655</span><span class="p">,</span><span class="w"> </span><span class="m">701</span><span class="p">,</span><span class="w"> </span><span class="m">712</span><span class="p">,</span><span class="w"> </span><span class="m">708</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="basic-plotting-using-r">Basic plotting using R</h2>
+
+<p>Let’s make a quick plot of some of this data:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">mozz</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-simpleplot-1.png" title="plot of chunk simpleplot" alt="plot of chunk simpleplot" width="612" style="display: block; margin: auto;" /></p>
+
+<p>What if we want nice red dots like on the website?</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">mozz</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-simpleplot2-1.png" title="plot of chunk simpleplot2" alt="plot of chunk simpleplot2" width="612" style="display: block; margin: auto;" /></p>
+
+<p>But hey, what about connecting them with lines?</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">mozz</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s1">'b'</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-simpleplot3-1.png" title="plot of chunk simpleplot3" alt="plot of chunk simpleplot3" width="612" style="display: block; margin: auto;" /></p>
+
+<p>What if we want more detail than the confusing “mozz” on the y axis?</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">mozz</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"Per Capita Mozzerella Consumption in lb"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-simpleplot4-1.png" title="plot of chunk simpleplot4" alt="plot of chunk simpleplot4" width="612" style="display: block; margin: auto;" /></p>
+
+<blockquote class="challenge">
+  <h2 id="changing-the-x-axis-label">Changing the x-axis label</h2>
+
+  <p>How do you think you’d change call of the plotting function to change the x-axis label from “year” to “Years”?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution">Solution</h2>
+
+    <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">mozz</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"Per Capita Mozzerella Consumption in lb"</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s2">"Years"</span><span class="p">)</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <p><img src="../fig/rmd-spxlabel-1.png" title="plot of chunk spxlabel" alt="plot of chunk spxlabel" width="612" style="display: block; margin: auto;" /></p>
+  </blockquote>
+</blockquote>
+
+<p>Now let’s plot the # of engineering docs as a function of time as well:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">mozz</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"Per Capita Mozzerella Consumption in lb"</span><span class="p">)</span><span class="w">
+</span><span class="n">par</span><span class="p">(</span><span class="n">new</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="c1"># we use this to overplot</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">edocs</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s2">"b"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-spedocs1-1.png" title="plot of chunk spedocs1" alt="plot of chunk spedocs1" width="612" style="display: block; margin: auto;" /></p>
+
+<!-- JPN: TBD will be to update this -- I feel like we could do more useful things here -->
+
+<p>But wait! the axis look horrible!  Let’s try this again:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">par</span><span class="p">(</span><span class="n">mar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.1</span><span class="p">)</span><span class="w"> </span><span class="c1"># this just adds a buffer onto the right axis</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">mozz</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"Per Capita Mozzerella Consumption in lb"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-spedocs2-1.png" title="plot of chunk spedocs2" alt="plot of chunk spedocs2" width="612" style="display: block; margin: auto;" /></p>
+
+<p>Let’s change the color of the axis for Per Mozz consumption:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">par</span><span class="p">(</span><span class="n">mar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.1</span><span class="p">)</span><span class="w"> </span><span class="c1"># this just adds a buffer onto the right axis</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">mozz</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"Per Capita Mozzerella Consumption in lb"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">axis</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">col.ticks</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">col.axis</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">col.lab</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span><span class="w">
+</span><span class="n">mtext</span><span class="p">(</span><span class="s2">"Per Capita Mozzerella Consumption in lb"</span><span class="p">,</span><span class="w"> </span><span class="n">side</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-spedocs3-1.png" title="plot of chunk spedocs3" alt="plot of chunk spedocs3" width="612" style="display: block; margin: auto;" /></p>
+
+<p>Now, let’s add back in the engineering PhD data:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">par</span><span class="p">(</span><span class="n">mar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.1</span><span class="p">)</span><span class="w"> </span><span class="c1"># this just adds a buffer onto the right axis</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">mozz</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s2">"Per Capita Mozzerella Consumption in lb"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">axis</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">col.ticks</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">col.axis</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">col.lab</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span><span class="w">
+</span><span class="n">mtext</span><span class="p">(</span><span class="s2">"Per Capita Mozzerella Consumption in lb"</span><span class="p">,</span><span class="w"> </span><span class="n">side</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">par</span><span class="p">(</span><span class="n">new</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="c1"># we use this to over plot</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="n">edocs</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="n">xaxt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"n"</span><span class="p">,</span><span class="w"> </span><span class="n">yaxt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"n"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">)</span><span class="w">
+</span><span class="n">axis</span><span class="p">(</span><span class="n">side</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w">
+</span><span class="n">mtext</span><span class="p">(</span><span class="s2">"Engineering Doctorates"</span><span class="p">,</span><span class="w"> </span><span class="n">side</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-spedocs4-1.png" title="plot of chunk spedocs4" alt="plot of chunk spedocs4" width="612" style="display: block; margin: auto;" /></p>
+
+<p>Hurray!  We have a cool looking plot!</p>
+
+<h2 id="plotting-histograms-in-r">Plotting Histograms in R</h2>
+
+<p>Maybe instead of a trend over time we want to know what is the distribution of the per capita cheese consumption. We can do this with the histogram:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hist</span><span class="p">(</span><span class="n">mozz</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s2">"Per Capita Mozzeralla Consumption in lbs"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-hist1-1.png" title="plot of chunk hist1" alt="plot of chunk hist1" width="612" style="display: block; margin: auto;" /></p>
+
+<p>Here the y-axis is showing the frequency of a certain value - how often a value shows up in our data. It looks like ~9.75 and 10.75 pounds are the most frequent values.</p>
+
+<p>Its worth noting this distribution is somewhat “bimodal” in that there are sort of 2 distinct peaks.  However, the number of measurements is very small here, so its hard to tell for sure.  This could be a “unimodal” distribution peaked around 9.75 lbs.</p>
+
+<h2 id="summary-statistics-in-r">Summary statistics in R</h2>
+
+<p>We can also print out some summary statistics of our per capita cheese consumption vector:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">summary</span><span class="p">(</span><span class="n">mozz</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   9.30    9.70   10.05   10.12   10.57   11.00 
+</code></pre></div></div>
+
+<p>We can also calculate these statistics seperately:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mean</span><span class="p">(</span><span class="n">mozz</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 10.12
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">median</span><span class="p">(</span><span class="n">mozz</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 10.05
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">var</span><span class="p">(</span><span class="n">mozz</span><span class="p">)</span><span class="w"> </span><span class="c1"># this is the "varience" which we'll discuss in a minute</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 0.2928889
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sd</span><span class="p">(</span><span class="n">mozz</span><span class="p">)</span><span class="w"> </span><span class="c1"># this is the standard deviation</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1] 0.5411921
+</code></pre></div></div>
+
+<h2 id="reading-in-and-analyzing-data-with-r">Reading in and analyzing data with R</h2>
+
+<p>Let’s try a larger dataset. In general to find data, check out data.gov or just google “statistical datasets” or there are some embedded in “R” as well, but let’s try reading from a file first.</p>
+
+<p>This is a file of random “tests” of before and after.  This is just a toy dataset but lets just say its a measure of resting heart rate before &amp; after a drug trial.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mydata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"data/hr_trialData.csv"</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<blockquote class="callout">
+  <h2 id="other-file-locations">Other file locations</h2>
+  <p>Make sure this file is stored somewhere you can remember!  You can put it in the same directory as this file (or whatever R-script you are working from) or you can specify a location.  For example, on my Mac I can specify the default <code class="language-plaintext highlighter-rouge">Downloads</code> folder as the location with:</p>
+
+  <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mydata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"~/Downloads/hr_trialData.csv"</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span></code></pre></div>  </div>
+
+  <p>Note: often times you’ll see assignment happening in R with the <code class="language-plaintext highlighter-rouge">&lt;-</code> symbols:</p>
+  <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mydata</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"~/Downloads/hr_trialData.csv"</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span></code></pre></div>  </div>
+  <p>This is just another way to denote assignment, and works the same as an <code class="language-plaintext highlighter-rouge">=</code> sign.</p>
+</blockquote>
+
+<p>Let’s take a look at our data:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">print</span><span class="p">(</span><span class="n">mydata</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   Before After
+1      52    40
+2      44    49
+3      45    41
+4      47    50
+5      45    45
+6      40    46
+7      45    47
+8      47    44
+9      49    45
+10     42    43
+11     43    47
+12     43    41
+13     43    39
+14     NA    42
+</code></pre></div></div>
+
+<p>Note, we can also just print out the first few rows of our dataset using <code class="language-plaintext highlighter-rouge">head</code>:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">head</span><span class="p">(</span><span class="n">mydata</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">4</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Before After
+1     52    40
+2     44    49
+3     45    41
+4     47    50
+</code></pre></div></div>
+
+<p>e can compare the print statement to <a href="data/hr_trialData.csv">what is in the file</a> as well.   Notice there is an NA - this just means there is no data there.</p>
+
+<p>Since its assumed folks are generally coming from an intro programming background using Python, we can first start by using R “Pythonically” and grabbing data into vectors of columns:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">before</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mydata</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="w">
+</span><span class="n">after</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mydata</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Check out the summary stats for both:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">summary</span><span class="p">(</span><span class="n">before</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+     40      43      45      45      47      52       1 
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">summary</span><span class="p">(</span><span class="n">after</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  39.00   41.25   44.50   44.21   46.75   50.00 
+</code></pre></div></div>
 
 
 
@@ -372,7 +600,7 @@ how data was procured)?</li>
   <div class="col-xs-1">
     <h3 class="text-right">
       
-      <a href="../02-R-RStudio/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
       
     </h3>
   </div>

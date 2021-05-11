@@ -45,8 +45,168 @@ how data was procured)?
  * How can we make predictions from collected data? What is the "accuracy" of those predictions?
  * How can we use computational tools to answer statistical questions?
 
-# Plotting Data with R
+# Reading and Plotting Data with R
 
 We'll be grabbing some data from [Spurious Correlations](http://www.tylervigen.com/spurious-correlations) which has a lot of great examples of ways to "lie" with data by showing correlations and implying causation.  In particular we'll be looking at the relationship between cheese consumption and engineering Ph.D.'s awarded per year:
 
 <img src='../figure/chart.png' width="70%">
+
+To remake this plot, we need to first have the data to do so!  We'll enter this "by hand" by putting the data in with vectors, which in R are denoted by a `c()`:
+
+```{r}
+year <- c(2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009)
+mozz <- c(9.3, 9.7, 9.7, 9.7, 9.9, 10.2, 10.5, 11, 10.6, 10.6)
+edocs <- c(480, 501, 540, 552, 547, 622, 655, 701, 712, 708)
+```
+
+## Basic plotting using R
+
+Let's make a quick plot of some of this data:
+```{r simpleplot}
+plot(year,mozz)
+```
+
+What if we want nice red dots like on the website?
+```{r simpleplot2}
+plot(year,mozz,col="red")
+```
+
+But hey, what about connecting them with lines?
+```{r simpleplot3}
+plot(year,mozz,col="red",type='b')
+```
+
+What if we want more detail than the confusing "mozz" on the y axis?
+```{r simpleplot4}
+plot(year,mozz,col="red",type="b", ylab="Per Capita Mozzerella Consumption in lb")
+```
+
+> ## Changing the x-axis label
+>
+> How do you think you'd change call of the plotting function to change the x-axis label from "year" to "Years"?
+>
+> > ## Solution
+> >
+> > ```{r spxlabel}
+> > plot(year,mozz,col="red",type="b", ylab="Per Capita Mozzerella Consumption in lb", xlab="Years")
+> > ```
+> {: .solution}
+{: .challenge}
+
+Now let's plot the # of engineering docs as a function of time as well:
+```{r spedocs1}
+plot(year,mozz,col="red",type="b", ylab="Per Capita Mozzerella Consumption in lb")
+par(new=TRUE) # we use this to overplot
+plot(year,edocs,col="black",type="b")
+```
+
+<!-- JPN: TBD will be to update this -- I feel like we could do more useful things here -->
+
+But wait! the axis look horrible!  Let's try this again:
+```{r spedocs2}
+par(mar = c(5,4,4,4) + 0.1) # this just adds a buffer onto the right axis
+plot(year,mozz,col="red",type="b", ylab="Per Capita Mozzerella Consumption in lb")
+```
+
+Let's change the color of the axis for Per Mozz consumption:
+```{r spedocs3}
+par(mar = c(5,4,4,4) + 0.1) # this just adds a buffer onto the right axis
+plot(year,mozz,col="red",type="b", ylab="Per Capita Mozzerella Consumption in lb")
+
+axis(2,col="red",col.ticks="red",col.axis="red",col.lab="red")
+mtext("Per Capita Mozzerella Consumption in lb", side=2, line=3, col="red")
+```
+
+Now, let's add back in the engineering PhD data:
+```{r spedocs4}
+par(mar = c(5,4,4,4) + 0.1) # this just adds a buffer onto the right axis
+plot(year,mozz,col="red",type="b", ylab="Per Capita Mozzerella Consumption in lb")
+
+axis(2,col="red",col.ticks="red",col.axis="red",col.lab="red")
+mtext("Per Capita Mozzerella Consumption in lb", side=2, line=3, col="red")
+
+par(new=TRUE) # we use this to over plot
+plot(year,edocs, type = "b", xaxt = "n", yaxt = "n", ylab = "", xlab = "")
+axis(side = 4)
+mtext("Engineering Doctorates", side = 4, line = 2)
+```
+
+Hurray!  We have a cool looking plot!
+
+## Plotting Histograms in R
+
+Maybe instead of a trend over time we want to know what is the distribution of the per capita cheese consumption. We can do this with the histogram:
+
+```{r hist1}
+hist(mozz,xlab="Per Capita Mozzeralla Consumption in lbs")
+```
+
+Here the y-axis is showing the frequency of a certain value - how often a value shows up in our data. It looks like ~9.75 and 10.75 pounds are the most frequent values.  
+
+Its worth noting this distribution is somewhat "bimodal" in that there are sort of 2 distinct peaks.  However, the number of measurements is very small here, so its hard to tell for sure.  This could be a "unimodal" distribution peaked around 9.75 lbs.
+
+## Summary statistics in R
+
+We can also print out some summary statistics of our per capita cheese consumption vector:
+
+```{r summ1}
+summary(mozz)
+```
+
+We can also calculate these statistics seperately:
+```{r summ2}
+mean(mozz)
+median(mozz)
+var(mozz) # this is the "varience" which we'll discuss in a minute
+sd(mozz) # this is the standard deviation
+```
+
+## Reading in and analyzing data with R
+
+Let's try a larger dataset. In general to find data, check out data.gov or just google "statistical datasets" or there are some embedded in "R" as well, but let's try reading from a file first.
+
+This is a file of random "tests" of before and after.  This is just a toy dataset but lets just say its a measure of resting heart rate before & after a drug trial.
+
+```{r readdata1}
+mydata = read.csv("data/hr_trialData.csv",header=TRUE,stringsAsFactors=FALSE)
+```
+
+> ## Other file locations
+> Make sure this file is stored somewhere you can remember!  You can put it in the same directory as this file (or whatever R-script you are working from) or you can specify a location.  For example, on my Mac I can specify the default `Downloads` folder as the location with:
+> 
+> ~~~
+> mydata = read.csv("~/Downloads/hr_trialData.csv",header=TRUE,stringsAsFactors=FALSE)
+> ~~~
+> {: .language-r}
+> 
+> Note: often times you'll see assignment happening in R with the `<-` symbols:
+> ~~~
+> mydata <- read.csv("~/Downloads/hr_trialData.csv",header=TRUE,stringsAsFactors=FALSE)
+> ~~~
+> {: .language-r}
+> This is just another way to denote assignment, and works the same as an `=` sign.
+{: .callout}
+
+Let's take a look at our data:
+```{r print1}
+print(mydata)
+```
+
+Note, we can also just print out the first few rows of our dataset using `head`:
+```{r print2}
+head(mydata, n=4)
+```
+
+e can compare the print statement to [what is in the file](data/hr_trialData.csv) as well.   Notice there is an NA - this just means there is no data there.
+
+Since its assumed folks are generally coming from an intro programming background using Python, we can first start by using R "Pythonically" and grabbing data into vectors of columns:
+```{r beforeafter}
+before = mydata[,1]
+after = mydata[,2]
+```
+
+Check out the summary stats for both:
+```{r sumba}
+summary(before)
+summary(after)
+```
