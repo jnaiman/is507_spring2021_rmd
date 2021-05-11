@@ -29,6 +29,10 @@ serve : lesson-md
 serve-exec : lesson-md
 	${JEKYLL} serve --watch --force_polling
 
+## JPN: tracing           : run a local server.
+serve-trace : lesson-md
+	${JEKYLL} serve --watch --force_polling --trace
+
 ## site             : build files but do not run a server.
 site : lesson-md
 	${JEKYLL} build

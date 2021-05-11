@@ -5,7 +5,7 @@ root: .
 
 These are the course materials for IS507 (previously IS542) at the [iSchool, University of Illinois, Urbana-Champaign](https://ischool.illinois.edu/).
 
-If you see any bugs or errors please issue a PR -- always looking to make things better!
+If you see any bugs or errors please issue a PR [by checking out the GitHub source page](https://github.com/jnaiman/is507_spring2021_rmd) -- always looking to make things better!
 
 > ## Getting Started
 >
