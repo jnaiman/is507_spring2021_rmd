@@ -431,3 +431,349 @@ summary(after)
 
 <!-- Actually run the script -->
 <script src="../assets/js/slideshow.js"></script>
+
+## Tips for the Homework
+
+We see that the `before` vector has an NA $\rightarrow$ this just means there is no value there. We can see this if we look at the file **go to file** there is a missing value.  The `summary` function figures this out, but if we try to use any of the summary statistics functions "on their own" we can run into trouble.  For example:
+
+
+~~~
+mean(after)
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 44.21429
+~~~
+{: .output}
+is fine but:
+
+~~~
+mean(before)
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] NA
+~~~
+{: .output}
+does not work, we need to "take out" these missing entries:
+
+~~~
+mean(before,na.rm=TRUE)
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 45
+~~~
+{: .output}
+
+Let's practice making some more histograms.
+
+~~~
+hist(before)
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-h1p1-1.png" title="plot of chunk h1p1" alt="plot of chunk h1p1" width="612" style="display: block; margin: auto;" />
+
+But wait, let's label it:
+
+~~~
+hist(before,main="Histograms")
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-h2p1-1.png" title="plot of chunk h2p1" alt="plot of chunk h2p1" width="612" style="display: block; margin: auto;" />
+
+Let's label x & y too:
+
+~~~
+hist(before,main="Histograms",xlab="count")
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-h3p1-1.png" title="plot of chunk h3p1" alt="plot of chunk h3p1" width="612" style="display: block; margin: auto;" />
+
+Now let's overlay another histogram.
+
+~~~
+hist(before,main="Histograms",xlab="count")
+hist(after,add=T)
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-h4p1-1.png" title="plot of chunk h4p1" alt="plot of chunk h4p1" width="612" style="display: block; margin: auto;" />
+
+But its hard to see what is going on, so let's start messing with the colors of each histogram.
+
+~~~
+hist(before,main="Histograms",xlab="count")
+hist(after,col=rgb(1,0,0),add=T)
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-h5p1-1.png" title="plot of chunk h5p1" alt="plot of chunk h5p1" width="612" style="display: block; margin: auto;" />
+
+Hmmm... but I feel like I want colors for both and maybe some transparency so let's try it!
+
+~~~
+hist(before,main="Histograms",xlab="Count",col=rgb(0,0,1,0.5))
+hist(after,col=rgb(0,1,0,0.5),add=T)
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-h6p1-1.png" title="plot of chunk h6p1" alt="plot of chunk h6p1" width="612" style="display: block; margin: auto;" />
+
+Let's also make sure we add a legend so we can tell what is what:
+
+~~~
+hist(before,main="Histograms",xlab="Count",col=rgb(0,0,1,0.5))
+hist(after,col=rgb(0,1,0,0.5),add=T)
+legend("topright",c("Before","After"),fill=c(rgb(0,0,1,0.5),rgb(0,1,0,0.5)))
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-h7p1-1.png" title="plot of chunk h7p1" alt="plot of chunk h7p1" width="612" style="display: block; margin: auto;" />
+
+## Using packages and Data in R
+
+### Packages/Libraries
+
+Let's look at how we can install data from R via packages.  For example, we can install the library `survival`:
+
+~~~
+install.packages("survival") # Note: this might take a little while!
+~~~
+{: .language-r}
+
+If we have already installed this package, we can make sure to load it like so:
+
+~~~
+library(survival)
+~~~
+{: .language-r}
+
+This contains data about survival rates of cancer.  Let's look at lung cancer.  Easiest thing to do is to just print out what we have for this dataset:
+
+~~~
+head(survival::lung)
+~~~
+{: .language-r}
+
+
+
+~~~
+  inst time status age sex ph.ecog ph.karno pat.karno meal.cal wt.loss
+1    3  306      2  74   1       1       90       100     1175      NA
+2    3  455      2  68   1       0       90        90     1225      15
+3    3 1010      1  56   1       0       90        90       NA      15
+4    5  210      2  57   1       1       90        60     1150      11
+5    1  883      2  60   1       0      100        90       NA       0
+6   12 1022      1  74   1       1       50        80      513       0
+~~~
+{: .output}
+Note here that we use the `::` to specify we are using the `lung` data from the `survival` package.  Usually we won't be this explicit with naming, but it can be useful sometimes as often packages will name data/functions with the same names.
+
+We can also check out the help pages for this package and dataset:
+~~~
+help(lung, package="survival")
+~~~
+{: .language-r}
+
+
+> 
+> <table width="100%" summary="page for lung {survival}"><tr><td>lung {survival}</td><td style="text-align: right;">R Documentation</td></tr></table>
+> 
+> <h2>NCCTG Lung Cancer Data</h2>
+> 
+> <h3>Description</h3>
+> 
+> <p>Survival in patients with advanced lung cancer from the North
+> Central Cancer Treatment Group.  Performance
+> scores rate how well the patient can perform usual daily activities.
+> </p>
+> 
+> 
+> <h3>Usage</h3>
+> 
+> <pre>
+> lung
+> cancer
+> </pre>
+> 
+> 
+> <h3>Format</h3>
+> 
+> 
+> <table summary="Rd table">
+> <tr>
+>  <td style="text-align: left;">
+>     inst:</td><td style="text-align: left;"> Institution code</td>
+> </tr>
+> <tr>
+>  <td style="text-align: left;">
+>     time:</td><td style="text-align: left;"> Survival time in days</td>
+> </tr>
+> <tr>
+>  <td style="text-align: left;">
+>     status:</td><td style="text-align: left;"> censoring status 1=censored, 2=dead</td>
+> </tr>
+> <tr>
+>  <td style="text-align: left;">
+>     age:</td><td style="text-align: left;"> Age in years</td>
+> </tr>
+> <tr>
+>  <td style="text-align: left;">
+>     sex:</td><td style="text-align: left;">  Male=1 Female=2</td>
+> </tr>
+> <tr>
+>  <td style="text-align: left;">
+>     ph.ecog:</td><td style="text-align: left;"> ECOG performance score as rated by the physician.
+>     0=asymptomatic, 1= symptomatic but completely ambulatory, 2= in bed
+>     &lt;50% of the day, 3= in bed &gt; 50% of the day but not bedbound, 4 =
+>     bedbound</td>
+> </tr>
+> <tr>
+>  <td style="text-align: left;">
+>     ph.karno:</td><td style="text-align: left;"> Karnofsky performance score (bad=0-good=100) rated by physician</td>
+> </tr>
+> <tr>
+>  <td style="text-align: left;">
+>     pat.karno:</td><td style="text-align: left;"> Karnofsky performance score as rated by patient</td>
+> </tr>
+> <tr>
+>  <td style="text-align: left;">
+>     meal.cal:</td><td style="text-align: left;"> Calories consumed at meals</td>
+> </tr>
+> <tr>
+>  <td style="text-align: left;">
+>     wt.loss:</td><td style="text-align: left;"> Weight loss in last six months</td>
+> </tr>
+> <tr>
+>  <td style="text-align: left;">
+>   </td>
+> </tr>
+> 
+> </table>
+> 
+> 
+> 
+> <h3>Note</h3>
+> 
+> <p>The use of 1/2 for alive/dead instead of the usual 0/1 is a historical
+> footnote.
+> For data contained on punch cards, IBM 360 Fortran treated blank as a zero,
+> which led to a policy within the section of Biostatistics to never
+> use &quot;0&quot; as a data value since one could not distinguish it from a
+> missing value.
+> The policy became a habit, as is often the case; and the 1/2 coding
+> endured long beyond the demise of punch cards and Fortran.
+> </p>
+> 
+> 
+> <h3>Source</h3>
+> 
+> <p>Terry Therneau</p>
+> 
+> 
+> <h3>References</h3>
+> 
+> <p>Loprinzi CL. Laurie JA. Wieand HS. Krook JE. Novotny PJ.
+> Kugler JW. Bartel J. Law M. Bateman M. Klatt NE. et al.
+> Prospective evaluation of prognostic variables from patient-completed
+> questionnaires. North Central Cancer Treatment Group.
+> Journal of Clinical Oncology. 12(3):601-7, 1994. </p>
+> 
+> <hr /><div style="text-align: center;">[Package <em>survival</em> version 3.2-7 <a href="00Index.html">Index</a>]</div>
+
+
+<!--```{r lelp1, echo=F}
+helpfile <- utils:::.getHelpFile(help(survival))
+tools:::Rd2HTML(helpfile, out =outfile)
+rawHTML <- paste(readLines(outfile), collapse="\n")
+knitr::asis_output(htmltools::htmlPreserve(rawHTML))
+```
+-->
+
+From this we see that there are things stored in this dataset like the person's age in years, their sex (here just represented as a binary), and how long they've survived.
+
+We can use this dataset much like the one we loaded from the CSV file:
+
+~~~
+time_in_days = survival::lung[,2]
+hist(time_in_days)
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-l4p1-1.png" title="plot of chunk l4p1" alt="plot of chunk l4p1" width="612" style="display: block; margin: auto;" />
+
+### Data
+There are also datasets "embedded" in R that are easy to use as well.  
+
+To load a list of all R data packages:
+~~~
+data()
+~~~
+{: .language-r}
+
+> ## Load the ChickWeight Package
+>
+> Load the check weight package by using `data(ChickWeight)`.  What is the output of its `help`?
+>
+> > ## Solution
+> >
+> > First, load the data:
+> > 
+> > ~~~
+> > data("ChickWeight") # loads a particular dataset
+> > ~~~
+> > {: .language-r}
+> > Then look at the help to get more info about this dataset:
+> > ~~~
+> > help(ChickWeight)
+> > ~~~
+> > {: .language-r}
+> > 
+> > <table width="100%" summary="page for ChickWeight {datasets}"><tr><td>ChickWeight {datasets}</td><td style="text-align: right;">R Documentation</td></tr></table>
+> > 
+> > <h2>Weight versus age of chicks on different diets</h2>
+> > 
+> > <h3>Description</h3>
+> > 
+> > <p>The <code>ChickWeight</code> data frame has 578 rows and 4 columns from an
+> > experiment on the effect of diet on early growth of chicks.
+> > </p>
+> > 
+> > 
+> > <h3>Usage</h3>
+> > 
+> > <pre>ChickWeight</pre>
+> > 
+> > 
+> > <h3>Format</h3>
+> > 
+> > <p>An object of class
+> > <code>c("nfnGroupedData", "nfGroupedData", "groupedData", "data.frame")</code>
+> > containing the following columns:
+> > </p>
+> > 
+> > <dl>
+> > <dt>weight</dt><dd>
+> {: .solution}
+{: .challenge}
+
+
+Let's try one:
+
+
+Get more info:
+
+

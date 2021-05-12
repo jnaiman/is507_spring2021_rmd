@@ -22,6 +22,13 @@ source: Rmd
 
 ```{r setup, include=FALSE}
 source("../bin/chunk-options.R")
+
+# this is for showing help -- https://stackoverflow.com/questions/26480559/r-markdown-file-include-help-information
+static_help <- function(pkg, topic, out, links = tools::findHTMLlinks()) {
+   pkgRdDB = tools:::fetchRdDB(file.path(find.package(pkg), 'help', pkg))
+   force(links)
+   tools::Rd2HTML(pkgRdDB[[topic]], out, package = pkg, Links = links, no_links = is.null(links))
+ }
 ```
 <!-- JPN: attribution formatting -->
 <style type="text/css" rel="stylesheet">
@@ -267,3 +274,161 @@ summary(after)
 
 <!-- Actually run the script -->
 <script src="../assets/js/slideshow.js"></script>
+
+## Tips for the Homework
+
+We see that the `before` vector has an NA $\rightarrow$ this just means there is no value there. We can see this if we look at the file **go to file** there is a missing value.  The `summary` function figures this out, but if we try to use any of the summary statistics functions "on their own" we can run into trouble.  For example:
+
+```{r m1p1}
+mean(after)
+```
+is fine but:
+```{r m2p1}
+mean(before)
+```
+does not work, we need to "take out" these missing entries:
+```{r m3p1}
+mean(before,na.rm=TRUE)
+```
+
+Let's practice making some more histograms.
+```{r h1p1}
+hist(before)
+```
+
+But wait, let's label it:
+```{r h2p1}
+hist(before,main="Histograms")
+```
+
+Let's label x & y too:
+```{r h3p1}
+hist(before,main="Histograms",xlab="count")
+```
+
+Now let's overlay another histogram.
+```{r h4p1}
+hist(before,main="Histograms",xlab="count")
+hist(after,add=T)
+```
+
+But its hard to see what is going on, so let's start messing with the colors of each histogram.
+```{r h5p1}
+hist(before,main="Histograms",xlab="count")
+hist(after,col=rgb(1,0,0),add=T)
+```
+
+Hmmm... but I feel like I want colors for both and maybe some transparency so let's try it!
+```{r h6p1}
+hist(before,main="Histograms",xlab="Count",col=rgb(0,0,1,0.5))
+hist(after,col=rgb(0,1,0,0.5),add=T)
+```
+
+Let's also make sure we add a legend so we can tell what is what:
+```{r h7p1}
+hist(before,main="Histograms",xlab="Count",col=rgb(0,0,1,0.5))
+hist(after,col=rgb(0,1,0,0.5),add=T)
+legend("topright",c("Before","After"),fill=c(rgb(0,0,1,0.5),rgb(0,1,0,0.5)))
+```
+
+## Using packages and Data in R
+
+### Packages/Libraries
+
+Let's look at how we can install data from R via packages.  For example, we can install the library `survival`:
+
+~~~
+install.packages("survival") # Note: this might take a little while!
+~~~
+{: .language-r}
+
+If we have already installed this package, we can make sure to load it like so:
+```{r l1p1}
+library(survival)
+```
+
+This contains data about survival rates of cancer.  Let's look at lung cancer.  Easiest thing to do is to just print out what we have for this dataset:
+```{r l2p1}
+head(survival::lung)
+```
+Note here that we use the `::` to specify we are using the `lung` data from the `survival` package.  Usually we won't be this explicit with naming, but it can be useful sometimes as often packages will name data/functions with the same names.
+
+We can also check out the help pages for this package and dataset:
+~~~
+help(lung, package="survival")
+~~~
+{: .language-r}
+
+
+> ```{r lhelp1, echo = FALSE, results = "asis"}
+> tmp <- tempfile()
+> #static_help("datasets", "survival", tmp)
+> static_help("survival", "lung", tmp)
+> out <- readLines(tmp)
+> headfoot <- grep("body", out)
+> cat(out[(headfoot[1] + 1):(headfoot[2] - 1)], sep = "\n")
+> ```
+
+
+<!--```{r lelp1, echo=F}
+helpfile <- utils:::.getHelpFile(help(survival))
+tools:::Rd2HTML(helpfile, out =outfile)
+rawHTML <- paste(readLines(outfile), collapse="\n")
+knitr::asis_output(htmltools::htmlPreserve(rawHTML))
+```
+-->
+
+From this we see that there are things stored in this dataset like the person's age in years, their sex (here just represented as a binary), and how long they've survived.
+
+We can use this dataset much like the one we loaded from the CSV file:
+```{r l4p1}
+time_in_days = survival::lung[,2]
+hist(time_in_days)
+```
+
+### Data
+There are also datasets "embedded" in R that are easy to use as well.  
+
+To load a list of all R data packages:
+~~~
+data()
+~~~
+{: .language-r}
+
+> ## Load the ChickWeight Package
+>
+> Load the check weight package by using `data(ChickWeight)`.  What is the output of its `help`?
+>
+> > ## Solution
+> >
+> > First, load the data:
+> > ```{r cwp1}
+> > data("ChickWeight") # loads a particular dataset
+> > ```
+> > Then look at the help to get more info about this dataset:
+> > ~~~
+> > help(ChickWeight)
+> > ~~~
+> > {: .language-r}
+> > ```{r lhelp2, echo = FALSE, results = "asis"}
+> > static_help <- function(pkg, topic, out, links = tools::findHTMLlinks()) {
+> >   pkgRdDB = tools:::fetchRdDB(file.path(find.package(pkg), 'help', pkg))
+> >   force(links)
+> >   tools::Rd2HTML(pkgRdDB[[topic]], out, package = pkg, Links = links, no_links = is.null(links))
+> > }
+> > tmp <- tempfile()
+> > static_help("datasets", "ChickWeight", tmp)
+> > out <- readLines(tmp)
+> > headfoot <- grep("body", out)
+> > cat(out[(headfoot[1] + 1):(headfoot[2] - 1)], sep = "\n")
+> > ```
+> {: .solution}
+{: .challenge}
+
+
+Let's try one:
+
+
+Get more info:
+
+
