@@ -379,17 +379,32 @@ summary(after)
 <!-- Slideshow container -->
 <!-- this one: https://www.w3schools.com/howto/howto_js_slideshow.asp -->
 
+
 <div class="slideshow-container">
 
   <!-- Full-width images with number and caption text -->
-  <div class="mySlides fade">
+  <div class="mySlides fade" >
     <div class="numbertext">1 / 3</div>
     <!--<img src="../lectureSlides/week01/slide1.jpg" style="width:100%">-->
-    <embed src="../lectureSlides/week01/slide1.pdf" style="width: 100%;height: 100%;border: none;" />
+    <embed src="../lectureSlides/week01/slide1.pdf#toolbar=0&navpanes=0&scrollbar=0"/>
     <div class="text">Some of these may look familar but some might be new -- the mean, median and quartiles might be new.</div>
   </div>
 
   <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <embed src="../lectureSlides/week01/slide2.pdf#toolbar=0&navpanes=0&scrollbar=0" />
+    <div class="text">Mean and Median represent the typical value of your numerical dataset.</div>
+  </div>
+  
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <embed src="../lectureSlides/week01/slide3.pdf#toolbar=0&navpanes=0&scrollbar=0" />
+    <div class="text">Standard deviation and quartiles give measures of the variability in the data.</div>
+  </div>
+
+
+
+<!--  <div class="mySlides fade">
     <div class="numbertext">2 / 3</div>
     <img src="../lectureSlides/week01/slide2.jpg" style="width:100%">
     <div class="text"><font color="red">Mean and Median represent the typical value of your numerical dataset.</font></div>
@@ -399,7 +414,7 @@ summary(after)
     <div class="numbertext">3 / 3</div>
     <img src="../lectureSlides/week01/slide3.jpg" style="width:100%">
     <div class="text"><font color="red">Standard deviation and quartiles give measures of the variability in the data.</font></div>
-  </div>
+  </div> -->
 
   <!-- Next and previous buttons -->
   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -414,4 +429,5 @@ summary(after)
   <span class="dot" onclick="currentSlide(3)"></span>
 </div>
 
+<!-- Actually run the script -->
 <script src="../assets/js/slideshow.js"></script>

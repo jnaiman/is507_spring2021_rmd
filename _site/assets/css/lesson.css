@@ -235,4 +235,6 @@ img { vertical-align: middle; }
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) { .prev, .next, .text { font-size: 11px; } }
 
+embed { max-width: 100%; max-height: 100%; width: 100%; height: 600px; overflow: hidden; }
+
 /*# sourceMappingURL=lesson.css.map */
