@@ -421,7 +421,10 @@ kbd {
 // slideshow
 // ----------------------------------------
 
-* {box-sizing:border-box}
+ * {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
 
 /* Slideshow container */
 .slideshow-container {
@@ -430,19 +433,14 @@ kbd {
   margin: auto;
 }
 
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
 /* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
   position: absolute;
   top: 50%;
   width: auto;
-  margin-top: -22px;
   padding: 16px;
+  margin-top: -22px;
   color: white;
   font-weight: bold;
   font-size: 18px;
@@ -498,20 +496,26 @@ kbd {
   background-color: #717171;
 }
 
+/* JPN: TBD -- note this is a horrific hack!!  Otherwise we get flickering :( */
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
+  -webkit-animation-duration: 1000000s;
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 10000000s;
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4}
+  from {opacity: 1} 
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .4}
+  from {opacity: 1} 
   to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
 }

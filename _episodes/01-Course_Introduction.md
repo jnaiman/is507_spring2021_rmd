@@ -375,6 +375,7 @@ summary(after)
 ~~~
 {: .output}
 
+
 <!-- Slideshow container -->
 <!-- this one: https://www.w3schools.com/howto/howto_js_slideshow.asp -->
 <div class="slideshow-container">
@@ -382,20 +383,20 @@ summary(after)
   <!-- Full-width images with number and caption text -->
   <div class="mySlides fade">
     <div class="numbertext">1 / 3</div>
-    <img src="../lectureSlides/week01/slide1.png" style="width:100%">
+    <img src="../lectureSlides/week01/slide1.jpg" style="width:100%">
     <div class="text">Caption Text</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">2 / 3</div>
-    <img src="../lectureSlides/week01/slide2.png" style="width:100%">
-    <div class="text">Caption Two</div>
+    <img src="../lectureSlides/week01/slide2.jpg" style="width:100%">
+    <div class="text"> </div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">3 / 3</div>
-    <img src="../lectureSlides/week01/slide3.png" style="width:100%">
-    <div class="text">Caption Three</div>
+    <img src="../lectureSlides/week01/slide3.jpg" style="width:100%">
+    <div class="text"> </div>
   </div>
 
   <!-- Next and previous buttons -->
@@ -415,5 +416,29 @@ summary(after)
 var slideIndex = 1;
 showSlides(slideIndex);
 
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
 
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+      console.log("i in slides=", i);
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+      console.log("i in dots =", i);
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
 </script>
