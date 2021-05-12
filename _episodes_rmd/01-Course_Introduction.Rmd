@@ -221,19 +221,19 @@ summary(after)
   <div class="mySlides fade">
     <div class="numbertext">1 / 3</div>
     <img src="../lectureSlides/week01/slide1.jpg" style="width:100%">
-    <div class="text">Caption Text</div>
+    <div class="text">Some of these may look familar but some might be new -- the mean, median and quartiles might be new.</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">2 / 3</div>
     <img src="../lectureSlides/week01/slide2.jpg" style="width:100%">
-    <div class="text"> </div>
+    <div class="text"><font color="red">Mean and Median represent the typical value of your numerical dataset.</font></div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">3 / 3</div>
     <img src="../lectureSlides/week01/slide3.jpg" style="width:100%">
-    <div class="text"> </div>
+    <div class="text"><font color="red">Standard deviation and quartiles give measures of the variability in the data.</font></div>
   </div>
 
   <!-- Next and previous buttons -->
