@@ -717,17 +717,6 @@ data()
 {: .language-r}
 
 
-~~~
-tmp <- tempfile()
-static_help("datasets", "ChickWeight", tmp)
-out <- readLines(tmp)
-headfoot <- grep("body>", out)
-
-# for the challenge+solution format below -- decrement all h2 tabs
-out = sub("<h2>","<h3>", out)
-out = sub("</h2>", "</h3>", out)
-~~~
-{: .language-r}
 
 > ## Load the ChickWeight Package
 >

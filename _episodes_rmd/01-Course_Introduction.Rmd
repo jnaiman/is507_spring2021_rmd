@@ -387,7 +387,7 @@ data()
 ~~~
 {: .language-r}
 
-```{r lp22}
+```{r lp22, echo=FALSE}
 tmp <- tempfile()
 static_help("datasets", "ChickWeight", tmp)
 out <- readLines(tmp)

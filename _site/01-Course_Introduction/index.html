@@ -19,7 +19,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2021-05-12 18:23:19 -0500">
+    <meta http-equiv="last-modified" content="2021-05-12 18:24:13 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -832,16 +832,6 @@ Journal of Clinical Oncology. 12(3):601-7, 1994. </p>
 
 <p>To load a list of all R data packages:</p>
 <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span><span class="p">()</span><span class="w">
-</span></code></pre></div></div>
-
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tmp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tempfile</span><span class="p">()</span><span class="w">
-</span><span class="n">static_help</span><span class="p">(</span><span class="s2">"datasets"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ChickWeight"</span><span class="p">,</span><span class="w"> </span><span class="n">tmp</span><span class="p">)</span><span class="w">
-</span><span class="n">out</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">readLines</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="w">
-</span><span class="n">headfoot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">grep</span><span class="p">(</span><span class="s2">"body&gt;"</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="p">)</span><span class="w">
-
-</span><span class="c1"># for the challenge+solution format below -- decrement all h2 tabs</span><span class="w">
-</span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub</span><span class="p">(</span><span class="s2">"&lt;h2&gt;"</span><span class="p">,</span><span class="s2">"&lt;h3&gt;"</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="p">)</span><span class="w">
-</span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub</span><span class="p">(</span><span class="s2">"&lt;/h2&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"&lt;/h3&gt;"</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
 
 <blockquote class="challenge">
