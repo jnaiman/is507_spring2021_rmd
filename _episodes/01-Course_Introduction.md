@@ -384,7 +384,8 @@ summary(after)
   <!-- Full-width images with number and caption text -->
   <div class="mySlides fade">
     <div class="numbertext">1 / 3</div>
-    <img src="../lectureSlides/week01/slide1.jpg" style="width:100%">
+    <!--<img src="../lectureSlides/week01/slide1.jpg" style="width:100%">-->
+    <embed src="../lectureSlides/week01/slide1.pdf" style="width: 100%;height: 100%;border: none;" />
     <div class="text">Some of these may look familar but some might be new -- the mean, median and quartiles might be new.</div>
   </div>
 
