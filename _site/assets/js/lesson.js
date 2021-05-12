@@ -72,4 +72,3 @@ $(window).scroll(function(){
     }
 });
 
-// for slideshow of lecture slides
