@@ -695,14 +695,6 @@ help(lung, package="survival")
 > <hr /><div style="text-align: center;">[Package <em>survival</em> version 3.2-7 <a href="00Index.html">Index</a>]</div>
 
 
-<!--```{r lelp1, echo=F}
-helpfile <- utils:::.getHelpFile(help(survival))
-tools:::Rd2HTML(helpfile, out =outfile)
-rawHTML <- paste(readLines(outfile), collapse="\n")
-knitr::asis_output(htmltools::htmlPreserve(rawHTML))
-```
--->
-
 From this we see that there are things stored in this dataset like the person's age in years, their sex (here just represented as a binary), and how long they've survived.
 
 We can use this dataset much like the one we loaded from the CSV file:
@@ -721,6 +713,19 @@ There are also datasets "embedded" in R that are easy to use as well.
 To load a list of all R data packages:
 ~~~
 data()
+~~~
+{: .language-r}
+
+
+~~~
+tmp <- tempfile()
+static_help("datasets", "ChickWeight", tmp)
+out <- readLines(tmp)
+headfoot <- grep("body>", out)
+
+# for the challenge+solution format below -- decrement all h2 tabs
+out = sub("<h2>","<h3>", out)
+out = sub("</h2>", "</h3>", out)
 ~~~
 {: .language-r}
 
@@ -744,7 +749,7 @@ data()
 > > 
 > > <table width="100%" summary="page for ChickWeight {datasets}"><tr><td>ChickWeight {datasets}</td><td style="text-align: right;">R Documentation</td></tr></table>
 > > 
-> > <h2>Weight versus age of chicks on different diets</h2>
+> > <h3>Weight versus age of chicks on different diets</h3>
 > > 
 > > <h3>Description</h3>
 > > 
@@ -767,13 +772,103 @@ data()
 > > 
 > > <dl>
 > > <dt>weight</dt><dd>
+> > <p>a numeric vector giving the body weight of the chick (gm).
+> > </p>
+> > </dd>
+> > <dt>Time</dt><dd>
+> > <p>a numeric vector giving the number of days since birth when
+> > the measurement was made.
+> > </p>
+> > </dd>
+> > <dt>Chick</dt><dd>
+> > <p>an ordered factor with levels
+> > <code>18</code> &lt; ... &lt; <code>48</code>
+> > giving a unique identifier for the chick.  The ordering of
+> > the levels groups chicks on the same diet together and
+> > orders them according to their final weight (lightest to
+> > heaviest) within diet.
+> > </p>
+> > </dd>
+> > <dt>Diet</dt><dd>
+> > <p>a factor with levels 1, ..., 4 indicating which
+> > experimental diet the chick received.
+> > </p>
+> > </dd>
+> > </dl>
+> > 
+> > 
+> > 
+> > <h3>Details</h3>
+> > 
+> > <p>The body weights of the chicks were measured at birth and every
+> > second day thereafter until day 20.  They were also measured on day
+> > 21.  There were four groups on chicks on different protein diets.
+> > </p>
+> > <p>This dataset was originally part of package <code>nlme</code>, and that has
+> > methods (including for <code>[</code>, <code>as.data.frame</code>, <code>plot</code> and
+> > <code>print</code>) for its grouped-data classes.
+> > </p>
+> > 
+> > 
+> > <h3>Source</h3>
+> > 
+> > <p>Crowder, M. and Hand, D. (1990), <em>Analysis of Repeated Measures</em>,
+> > Chapman and Hall (example 5.3)
+> > </p>
+> > <p>Hand, D. and Crowder, M. (1996), <em>Practical Longitudinal Data
+> > Analysis</em>, Chapman and Hall (table A.2)
+> > </p>
+> > <p>Pinheiro, J. C. and Bates, D. M. (2000) <em>Mixed-effects Models in
+> > S and S-PLUS</em>, Springer.
+> > </p>
+> > 
+> > 
+> > <h3>See Also</h3>
+> > 
+> > <p><code><a href="../../stats/html/SSlogis.html">SSlogis</a></code> for models fitted to this dataset.
+> > </p>
+> > 
+> > 
+> > <h3>Examples</h3>
+> > 
+> > <pre>
+> > require(graphics)
+> > coplot(weight ~ Time | Chick, data = ChickWeight,
+> >        type = "b", show.given = FALSE)
+> > </pre>
+> > 
+> > <hr /><div style="text-align: center;">[Package <em>datasets</em> version 4.0.3 <a href="00Index.html">Index</a>]</div>
 > {: .solution}
 {: .challenge}
 
+If the output of the `help` function is too confusing, we can always look at the top of the data:
 
-Let's try one:
+~~~
+head(ChickWeight)
+~~~
+{: .language-r}
 
 
-Get more info:
 
+~~~
+  weight Time Chick Diet
+1     42    0     1    1
+2     51    2     1    1
+3     59    4     1    1
+4     64    6     1    1
+5     76    8     1    1
+6     93   10     1    1
+~~~
+{: .output}
+
+Which shows the weight of a baby chicken on different diets.
+
+One useful thing about help pages are that often there are examples.  We can run these with:
+
+~~~
+example(ChickWeight)
+~~~
+{: .language-r}
+
+Don't worry if any output plots are confusing!  We'll talk more about them later in the course.
 

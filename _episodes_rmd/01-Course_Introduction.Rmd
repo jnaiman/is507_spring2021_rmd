@@ -365,18 +365,10 @@ help(lung, package="survival")
 > #static_help("datasets", "survival", tmp)
 > static_help("survival", "lung", tmp)
 > out <- readLines(tmp)
-> headfoot <- grep("body", out)
+> headfoot <- grep("body>", out)
 > cat(out[(headfoot[1] + 1):(headfoot[2] - 1)], sep = "\n")
 > ```
 
-
-<!--```{r lelp1, echo=F}
-helpfile <- utils:::.getHelpFile(help(survival))
-tools:::Rd2HTML(helpfile, out =outfile)
-rawHTML <- paste(readLines(outfile), collapse="\n")
-knitr::asis_output(htmltools::htmlPreserve(rawHTML))
-```
--->
 
 From this we see that there are things stored in this dataset like the person's age in years, their sex (here just represented as a binary), and how long they've survived.
 
@@ -395,6 +387,18 @@ data()
 ~~~
 {: .language-r}
 
+```{r lp22}
+tmp <- tempfile()
+static_help("datasets", "ChickWeight", tmp)
+out <- readLines(tmp)
+headfoot <- grep("body>", out)
+
+# for the challenge+solution format below -- decrement all h2 tabs
+out = sub("<h2>","<h3>", out)
+out = sub("</h2>", "</h3>", out)
+
+```
+
 > ## Load the ChickWeight Package
 >
 > Load the check weight package by using `data(ChickWeight)`.  What is the output of its `help`?
@@ -411,24 +415,24 @@ data()
 > > ~~~
 > > {: .language-r}
 > > ```{r lhelp2, echo = FALSE, results = "asis"}
-> > static_help <- function(pkg, topic, out, links = tools::findHTMLlinks()) {
-> >   pkgRdDB = tools:::fetchRdDB(file.path(find.package(pkg), 'help', pkg))
-> >   force(links)
-> >   tools::Rd2HTML(pkgRdDB[[topic]], out, package = pkg, Links = links, no_links = is.null(links))
-> > }
-> > tmp <- tempfile()
-> > static_help("datasets", "ChickWeight", tmp)
-> > out <- readLines(tmp)
-> > headfoot <- grep("body", out)
 > > cat(out[(headfoot[1] + 1):(headfoot[2] - 1)], sep = "\n")
 > > ```
 > {: .solution}
 {: .challenge}
 
+If the output of the `help` function is too confusing, we can always look at the top of the data:
+```{r cw2p1}
+head(ChickWeight)
+```
 
-Let's try one:
+Which shows the weight of a baby chicken on different diets.
 
+One useful thing about help pages are that often there are examples.  We can run these with:
 
-Get more info:
+~~~
+example(ChickWeight)
+~~~
+{: .language-r}
 
+Don't worry if any output plots are confusing!  We'll talk more about them later in the course.
 
