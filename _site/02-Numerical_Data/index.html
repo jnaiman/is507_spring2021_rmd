@@ -66,7 +66,7 @@
 	<![endif]-->
 
   <title>
-  IS 507 -- Data, Stats, and Info
+  Intro to Numerical Data, Continuing Intro to R &ndash; IS 507 -- Data, Stats, and Info
   </title>  
 
   </head>
@@ -162,7 +162,9 @@
 	
         <li><a href="../LICENSE.md">License</a></li>
 	
-	<li><a href="/edit//aio.md" data-checker-ignore>Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	
+	<li><a href="/edit//_episodes_rmd/02-Numerical_Data.Rmd" data-checker-ignore>Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	
 	
       </ul>
       <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
@@ -188,45 +190,208 @@
 
 
 
-<h1 class="maintitle"><a href="../">IS 507 -- Data, Stats, and Info</a></h1>
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../01-Course_Introduction/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+    <h3 class="maintitle"><a href="../">IS 507 -- Data, Stats, and Info</a></h3>
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
+      
+    </h3>
+  </div>
+</div>
 
 <article>
+  <div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <h1 class="maintitle">Intro to Numerical Data, Continuing Intro to R</h1>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
 
-<script>
-  window.onload = function() {
-    var lesson_episodes = [
-    
-    "/01-Course_Introduction/index.html",
-    
-    "/02-Numerical_Data/index.html"
-    
-    ];
-    var xmlHttp = [];  /* Required since we are going to query every episode. */
-    for (i=0; i < lesson_episodes.length; i++) {
-      xmlHttp[i] = new XMLHttpRequest();
-      xmlHttp[i].episode = lesson_episodes[i];  /* To enable use this later. */
-      xmlHttp[i].onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          var article_here = document.getElementById(this.episode);
-          var parser = new DOMParser();
-          var htmlDoc = parser.parseFromString(this.responseText,"text/html");
-          var htmlDocArticle = htmlDoc.getElementsByTagName("article")[0];
-          article_here.innerHTML = htmlDocArticle.innerHTML;
-        }
-      }
-      var episode_url = ".." + lesson_episodes[i];
-      xmlHttp[i].open("GET", episode_url);
-      xmlHttp[i].send(null);
-    }
-  }
-</script>
+  
+  
+<blockquote class="objectives">
+  <h2>Overview</h2>
 
-<article id="/01-Course_Introduction/index.html"></article>
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Week:</strong> 2
+      <!--<br/>
+      <strong>Exercises:</strong>  min-->
+    </div>
+    <div class="col-md-9">
+      <strong>Reading</strong>
+      <ul>
+	
+	<li><p>This weeks topics cover remaining parts of OIS 1.1, 1.2, 1.3, 2.1; OIS 1.4 &amp; 2.3 (we won’t cover 2.3 yet, but will cover the concepts presented here later in the class so feel free to read it over now).</p>
+</li>
+	
+	<li><p>We will also cover ITR 1, 2, 5, 6, 7, 12 (ITR can be skimmed or read in depth depending on comfort level with coding)</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
 
-<article id="/02-Numerical_Data/index.html"></article>
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How can we analyze numerical data?</p>
+</li>
+	
+	<li><p>TBD</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+
+  
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>TBD</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+  
+<!-- JPN: attribution formatting -->
+<style type="text/css" rel="stylesheet">
+* {.attribution{
+     position:absolute;
+     bottom:0;
+     right:0;
+     font-size:0.5em
+ }}
+</style>
+
+<h2 id="summary-statistics-and-histograms-with-data-in-r">Summary statistics and histograms with data in R</h2>
+
+<h3 id="review">Review</h3>
+
+<p>Last time we talked about some <em>summary statistics</em> and how to calculate them for data that is made up of numbers:</p>
+<ul>
+  <li>the <em>mean</em> is the sum of all data values divided by the number of data points</li>
+  <li>the <em>median</em> can be thought of as the “middle” number that splits the data into two halves if we order numerical data from smallest to largest</li>
+  <li>the <em>standard</em> deviaion is the square root of something called the <em>varience</em> which is roughly the average distnace of data values from the mean</li>
+  <li>the <em>first/third quartiles</em> delinate where 25% of the data falls below (first) and above (third) if we ordered the data from smallest to largest (the <em>median</em> is like the 50% or second quartile)</li>
+</ul>
+
+<p>Let’s do some analysis with “fake” class data showing programming histories of students in the class.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"data/formatted_class_answers.csv"</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span><span class="c1"># note: this is a placeholder for real data</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Make sure this file is stored somewhere you can remember!  You can put it in the same directory as this file (or whatever R-script you are working from) or you can specify a location.  For example, on my Mac I can specify the default <code class="language-plaintext highlighter-rouge">Downloads</code> folder as the location with:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"~/Downloads/formatted_class_answers.csv"</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>What is in this dataset?</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classData</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    X familiarity.with.stats programming.language           time.programming
+1   1                      3                    R                 &lt; 6 months
+2   2                      3                    R Between 6 months to 1 year
+3   3                      2               Python                 &lt; 6 months
+4   4                      3               Python Between 6 months to 1 year
+5   5                      3               Python                 &lt; 6 months
+6   6                      2               Python                 &lt; 6 months
+7   8                      2                C/C++                  2-4 years
+8   7                      2                Shell                  1-2 years
+9   9                      3               python Between 6 months to 1 year
+10 10                      3               python                  1-2 years
+11 11                      3               Python                  2-4 years
+12 12                      3               Python                 &lt; 6 months
+13 13                      2           JavaScript                  &gt; 4 years
+14 14                      2               Python Between 6 months to 1 year
+15 15                      2                  SQL Between 6 months to 1 year
+</code></pre></div></div>
+
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>TBD</p>
+</li>
+    
+  </ul>
+</blockquote>
 
 
 </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../01-Course_Introduction/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
+      
+    </h3>
+  </div>
+</div>
+
 
       
       
@@ -244,7 +409,9 @@
     </div>
     <div class="col-md-6 help-links" align="right">
 	
-	<a href="/edit//aio.md" data-checker-ignore>Edit on GitHub</a>
+	
+	<a href="/edit//_episodes_rmd/02-Numerical_Data.Rmd" data-checker-ignore>Edit on GitHub</a>
+	
 	
 	/
 	<a href="/blob//CONTRIBUTING.md" data-checker-ignore>Contributing</a>

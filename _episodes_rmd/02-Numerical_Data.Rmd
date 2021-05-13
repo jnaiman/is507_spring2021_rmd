@@ -1,0 +1,61 @@
+---
+title: "Intro to Numerical Data, Continuing Intro to R"
+include_overview: true
+week: 2
+readings:
+ - This weeks topics cover remaining parts of OIS 1.1, 1.2, 1.3, 2.1; OIS 1.4 & 2.3 (we won't cover 2.3 yet, but will cover the concepts presented here later in the class so feel free to read it over now).
+ - We will also cover ITR 1, 2, 5, 6, 7, 12 (ITR can be skimmed or read in depth depending on comfort level with coding)
+questions:
+ - How can we analyze numerical data?
+ - TBD
+objectives:
+ - TBD
+keypoints:
+ - "TBD"
+source: Rmd
+---
+
+
+```{r setup, include=FALSE}
+source("../bin/chunk-options.R")
+source("../bin/functions.R")
+```
+<!-- JPN: attribution formatting -->
+<style type="text/css" rel="stylesheet">
+* {.attribution{
+     position:absolute;
+     bottom:0;
+     right:0;
+     font-size:0.5em
+ }}
+</style>
+
+## Summary statistics and histograms with data in R
+
+### Review
+
+Last time we talked about some *summary statistics* and how to calculate them for data that is made up of numbers:
+  * the *mean* is the sum of all data values divided by the number of data points
+  * the *median* can be thought of as the "middle" number that splits the data into two halves if we order numerical data from smallest to largest
+  * the *standard* deviaion is the square root of something called the *varience* which is roughly the average distnace of data values from the mean
+  * the *first/third quartiles* delinate where 25% of the data falls below (first) and above (third) if we ordered the data from smallest to largest (the *median* is like the 50% or second quartile)
+
+Let's do some analysis with "fake" class data showing programming histories of students in the class.
+
+```{r d1p2}
+classData = read.csv("data/formatted_class_answers.csv", stringsAsFactors=T)
+# note: this is a placeholder for real data
+```
+
+Make sure this file is stored somewhere you can remember!  You can put it in the same directory as this file (or whatever R-script you are working from) or you can specify a location.  For example, on my Mac I can specify the default `Downloads` folder as the location with:
+
+~~~
+classData = read.csv("~/Downloads/formatted_class_answers.csv", stringsAsFactors=T)
+~~~
+{: .language-r}
+
+What is in this dataset?
+
+```{r d2p2}
+classData
+```

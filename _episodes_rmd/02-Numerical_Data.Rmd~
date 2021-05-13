@@ -215,7 +215,7 @@ summary(after)
 
 <!-- Slideshow container -->
 <!-- this one: https://www.w3schools.com/howto/howto_js_slideshow.asp -->
-<!-- also, for embed: https://stackoverflow.com/questions/2104608/hiding-the-toolbars-surrounding-an-embedded-pdf -->
+
 
 <div class="slideshow-container">
 
