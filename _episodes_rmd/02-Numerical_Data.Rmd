@@ -130,6 +130,118 @@ barplot(table(languages),ylab='Counts')
 ```
 
 <!-- JPN: note you need double dollar signs for latex here -->
-Ok, but for many languages this can be hard to see $$\rightarrow$$ maybe different colors for each? 
+Ok, but for many languages this can be hard to see $$\rightarrow$$ maybe different colors for each?
+```{r lh8p2}
+barplot(table(languages),ylab='Counts',col=c("red","blue","green","yellow","magenta"))
+```
 
+Ok cool, we see that a lot of folks use Python.
+
+We can do the same sort of thing for the length of time folks have been coding:
+
+```{r lh9p2}
+time_in = classData[,4]
+barplot(table(time_in)) 
+```
+Note: In RStudio, you'll have to expand the window to see all the labels.
+
+Ok, so this tells us *something* but its hard to get a sense of the actual timescales since they are not ordered & are non-uniform increments of time.
+
+Additionally, things are "out of order" because they don't fall in nice ordered time bins.  This is because this data is stored as "categorical" data, i.e. in this case as strings:
+```{r ll1p2}
+levels(time_in)
+```
+
+## Practicing for-loops and if-else statements
+
+Let's reformat this data a bit and get some practice with for-loops in R in the process!
+
+```{r f1p2}
+time_min = c() # storage, save the min edge of our bins in years
+time_max = c() # storage, save the max edge of our bins in years
+```
+
+Let's look at the options again:
+```{r f2p2}
+myLevels = levels(time_in)
+print(myLevels)
+```
+
+Now we get to practice doing a for-loop in R.  Note, it is similar to how it's done in Python, but there are a few differences!  The syntax is generally:
+
+~~~
+for (loop_index in 1:Number_of_loops){
+   # DO STUFF
+}
+~~~
+{: .language-r}
+
+Note that this definition includes `{}` instead of indentations to denote what is contained in the for-loop.  (if-statements are denoted similary as we'll see below.)
+
+Let's do a for loop and determine bins by hand:
+```{r f3p2}
+for (i in 1:length(time_in)){
+  if (time_in[i] == "< 6 months"){ # < 6 months
+    time_min = c(time_min,0)
+    time_max = c(time_max, 0.5) # in years => 0.5 years = 6 months
+  } else if (time_in[i] == "Between 6 months to 1 year") { # 0.5-1 years
+    time_min = c(time_min, 0.5)
+    time_max = c(time_max, 1.0)
+  } else if (time_in[i] == "1-2 years") { # 1-2 years
+    time_min = c(time_min, 1.0)
+    time_max = c(time_max, 2.0)
+  } else if (time_in[i] == "2-4 years") { # 2-4 years
+    time_min = c(time_min, 2.0)
+    time_max = c(time_max, 4.0)
+  } else { # otherwise, >4 years
+    time_min = c(time_min,4.0) 
+    time_max = c(time_max,5.0) # just giving an arbitrary upper bound of 5 years
+  }
+}
+```
+
+```{r f4p2}
+print(time_min)
+print(time_max)
+```
+
+Let's say the mid-point of this data is the `time`:
+```{r f5p2}
+time = 0.5*(time_min+time_max)
+hist(time)
+```
+
+Note of course, in reality, the bins are not the same size so we can manually change the break-points to more accurately represent the data:
+```{r f6p2}
+hist(time,breaks=c(0.0,0.5,1,2,4,5))
+```
+
+Hmmm, but that looks like density, not counts, how do we get counts?
+~~~
+help(hist)
+~~~
+{: .language-r}
+> ```{r lhelp22, echo = FALSE, results = "asis"}
+> tmp <- tempfile()
+> static_help("graphics", "hist", tmp)
+> out <- readLines(tmp)
+> headfoot <- grep("body>", out)
+> cat(out[(headfoot[1] + 1):(headfoot[2] - 1)], sep = "\n")
+> ```
+
+See there is a "freq" variable, set to `TRUE` to get counts:
+```{r f7p2}
+hist(time,breaks=c(0.0,0.5,1,2,4,5),freq=TRUE)
+```
+
+We get an error telling us that the areas are wrong, but we have to think about what that means for us $$\rightarrow$$ do we actually care?  Density is telling us the frequency over the unit time, but thats not what we really want $$\rightarrow$$ we want counts with bars representing actual times.
+
+Picking which one depends on your data & how you want to present it and you have to make sure to think about it.
+
+## Summary statistics for class data
+
+Let's look at some summary stats for our data for how long folks have been programming:
+```{r f8p2}
+summary(time)
+```
 
