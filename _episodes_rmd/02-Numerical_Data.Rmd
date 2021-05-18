@@ -13,12 +13,17 @@ objectives:
 keypoints:
  - "TBD"
 source: Rmd
+<!--latex_engine: xelatex-->
 ---
 
 
+
 ```{r setup, include=FALSE}
+require("knitr")
+#require("pandoc")
 source("../bin/chunk-options.R")
 source("../bin/functions.R")
+library(tinytex)
 ```
 <!-- JPN: attribution formatting -->
 <style type="text/css" rel="stylesheet">
@@ -59,3 +64,72 @@ What is in this dataset?
 ```{r d2p2}
 classData
 ```
+
+What are the names of the columns?
+```{r cnp2}
+colnames(classData)
+```
+
+Let's make a vector of the different languages folks use:
+```{r lp2}
+languages = classData[,3]
+languages
+```
+
+We can also ask for the "levels" of these catagories:
+```{r l2p2}
+print(levels(languages))
+```
+
+Let's try making some plots of the language data.
+```{r l3p3}
+hist(languages) # should produce an error since "languages" is NOT a count - its a bunch of strings
+```
+
+Since `languages` is not numerical data, to make a histogram we have to play some tricks.  First, let's start by checking out the output of the `table` function:
+```{r l4p3}
+table(languages) # shows how many "hits" for a specific language
+```
+
+We can try using the `hist` function again:
+```{r l4p2}
+hist(table(languages)) # plots something now, but is actually counting # of bottom level, not counts
+```
+
+Not quite what we want, so let's try another plotting function called `barplot`:
+```{r lh1p2}
+barplot(table(languages)) # which sort of does what we want
+```
+
+Note: there are some long strings that aren't showing we can try changing one - for example, "python" should be "Python":
+```{r lh2p2}
+print(levels(languages))
+```
+
+We can fix this issue with some clever renaming of our levels:
+```{r lh3p2}
+print(levels(languages)[4]) # let's replace this
+```
+```{r lh4p2}
+levels(languages)[4] = "Python" # with this
+```
+
+Take a look:
+```{r lh5p2}
+levels(languages)
+```
+
+Let's try replotting:
+```{r lh6p2}
+barplot(table(languages))
+```
+
+But what is the y axis?
+```{r lh7p2}
+barplot(table(languages),ylab='Counts')
+```
+
+<!-- JPN: note you need double dollar signs for latex here -->
+Ok, but for many languages this can be hard to see $$\rightarrow$$ maybe different colors for each? 
+
+

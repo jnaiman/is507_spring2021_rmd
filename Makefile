@@ -1,6 +1,10 @@
 ## ========================================
 ## Commands for both workshop and lesson websites.
 
+# JPN for latex -- see https://github.com/mqwilber/2016-04-14-ucsb/blob/gh-pages/Makefile
+#PANDOC ?= pandoc
+#PANDOC_FLAGS = --smart
+
 # Settings
 MAKEFILES=Makefile $(wildcard *.mk)
 JEKYLL=jekyll

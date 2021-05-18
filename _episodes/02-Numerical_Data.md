@@ -15,7 +15,9 @@ objectives:
 keypoints:
  - "TBD"
 source: Rmd
+<!--latex_engine: xelatex-->
 ---
+
 
 
 
@@ -84,3 +86,171 @@ classData
 15 15                      2                  SQL Between 6 months to 1 year
 ~~~
 {: .output}
+
+What are the names of the columns?
+
+~~~
+colnames(classData)
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "X"                      "familiarity.with.stats" "programming.language"  
+[4] "time.programming"      
+~~~
+{: .output}
+
+Let's make a vector of the different languages folks use:
+
+~~~
+languages = classData[,3]
+languages
+~~~
+{: .language-r}
+
+
+
+~~~
+ [1] R          R          Python     Python     Python     Python    
+ [7] C/C++      Shell      python     python     Python     Python    
+[13] JavaScript Python     SQL       
+Levels: C/C++ JavaScript python Python R Shell SQL
+~~~
+{: .output}
+
+We can also ask for the "levels" of these catagories:
+
+~~~
+print(levels(languages))
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "C/C++"      "JavaScript" "python"     "Python"     "R"         
+[6] "Shell"      "SQL"       
+~~~
+{: .output}
+
+Let's try making some plots of the language data.
+
+~~~
+hist(languages) # should produce an error since "languages" is NOT a count - its a bunch of strings
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in hist.default(languages): 'x' must be numeric
+~~~
+{: .error}
+
+Since `languages` is not numerical data, to make a histogram we have to play some tricks.  First, let's start by checking out the output of the `table` function:
+
+~~~
+table(languages) # shows how many "hits" for a specific language
+~~~
+{: .language-r}
+
+
+
+~~~
+languages
+     C/C++ JavaScript     python     Python          R      Shell        SQL 
+         1          1          2          7          2          1          1 
+~~~
+{: .output}
+
+We can try using the `hist` function again:
+
+~~~
+hist(table(languages)) # plots something now, but is actually counting # of bottom level, not counts
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-l4p2-1.png" title="plot of chunk l4p2" alt="plot of chunk l4p2" width="612" style="display: block; margin: auto;" />
+
+Not quite what we want, so let's try another plotting function called `barplot`:
+
+~~~
+barplot(table(languages)) # which sort of does what we want
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-lh1p2-1.png" title="plot of chunk lh1p2" alt="plot of chunk lh1p2" width="612" style="display: block; margin: auto;" />
+
+Note: there are some long strings that aren't showing we can try changing one - for example, "python" should be "Python":
+
+~~~
+print(levels(languages))
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "C/C++"      "JavaScript" "python"     "Python"     "R"         
+[6] "Shell"      "SQL"       
+~~~
+{: .output}
+
+We can fix this issue with some clever renaming of our levels:
+
+~~~
+print(levels(languages)[4]) # let's replace this
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "Python"
+~~~
+{: .output}
+
+~~~
+levels(languages)[4] = "Python" # with this
+~~~
+{: .language-r}
+
+Take a look:
+
+~~~
+levels(languages)
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "C/C++"      "JavaScript" "python"     "Python"     "R"         
+[6] "Shell"      "SQL"       
+~~~
+{: .output}
+
+Let's try replotting:
+
+~~~
+barplot(table(languages))
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-lh6p2-1.png" title="plot of chunk lh6p2" alt="plot of chunk lh6p2" width="612" style="display: block; margin: auto;" />
+
+But what is the y axis?
+
+~~~
+barplot(table(languages),ylab='Counts')
+~~~
+{: .language-r}
+
+<img src="../fig/rmd-lh7p2-1.png" title="plot of chunk lh7p2" alt="plot of chunk lh7p2" width="612" style="display: block; margin: auto;" />
+
+<!-- JPN: note you need double dollar signs for latex here -->
+Ok, but for many languages this can be hard to see $$\rightarrow$$ maybe different colors for each? 
+
+
