@@ -19,7 +19,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2021-05-18 17:12:51 -0500">
+    <meta http-equiv="last-modified" content="2021-06-02 19:16:43 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -896,6 +896,139 @@ angle, : the AREAS in the plot are wrong -- rather use 'freq = FALSE'
   0.250   0.250   0.750   1.233   1.500   4.500 
 </code></pre></div></div>
 
+<p>Let’s over plot where these are on our histograms using another plotting function called <code class="language-plaintext highlighter-rouge">abline</code> that overplots lines on our plots:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hist</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">breaks</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span><span class="m">0.5</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">),</span><span class="n">freq</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+
+</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">time</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">median</span><span class="p">(</span><span class="n">time</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-f9p2-1.png" title="plot of chunk f9p2" alt="plot of chunk f9p2" width="612" style="display: block; margin: auto;" /></p>
+
+<p>Let’s also add a legend:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hist</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">breaks</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span><span class="m">0.5</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">),</span><span class="n">freq</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+
+</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">time</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">median</span><span class="p">(</span><span class="n">time</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="n">legend</span><span class="p">(</span><span class="s2">"topright"</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s2">"Mean"</span><span class="p">,</span><span class="s2">"Median"</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="s2">"red"</span><span class="p">),</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-f10p2-1.png" title="plot of chunk f10p2" alt="plot of chunk f10p2" width="612" style="display: block; margin: auto;" /></p>
+
+<p>Something to think about - does the mean or median describe the distribution better here?  What do they mean if the box sizes are different?  Keep this thoughts with you over the next few classes.</p>
+
+<p>Now let’s say we add the data of an old person in like myself that has been programming for a bit:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="m">18.0</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Let’s overplot the mean and median of our new time on our old histogram:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># old plot</span><span class="w">
+</span><span class="n">hist</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">breaks</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span><span class="m">0.5</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">),</span><span class="n">freq</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">time</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">median</span><span class="p">(</span><span class="n">time</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">legend</span><span class="p">(</span><span class="s2">"topright"</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s2">"Mean"</span><span class="p">,</span><span class="s2">"Median"</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="s2">"red"</span><span class="p">),</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># new additions</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">new_time</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">4</span><span class="p">,</span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">median</span><span class="p">(</span><span class="n">new_time</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">4</span><span class="p">,</span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-nt2p2-1.png" title="plot of chunk nt2p2" alt="plot of chunk nt2p2" width="612" style="display: block; margin: auto;" /></p>
+
+<p>We see that the mean changes a lot, BUT the median does not $\rightarrow$ this is very interesting to think about when we want to characterize our data.</p>
+
+<p>Let’s try the same exercise with the standdard deviation and the interquartile range (IQR).  This time we’ll try making some lines on our plot using the <code class="language-plaintext highlighter-rouge">lines</code> function instead of <code class="language-plaintext highlighter-rouge">abline</code> for some variety, first with our original dataset:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hist</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">breaks</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span><span class="m">0.5</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">),</span><span class="n">freq</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">#  Usually (and later on in class) we'll talk about full STDDEV's around the mean, </span><span class="w">
+</span><span class="c1">#    but 1/2 STDDEV is a little easier to see here</span><span class="w">
+</span><span class="n">lines</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="m">-0.5</span><span class="o">*</span><span class="n">sd</span><span class="p">(</span><span class="n">time</span><span class="p">),</span><span class="n">mean</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="m">+0.5</span><span class="o">*</span><span class="n">sd</span><span class="p">(</span><span class="n">time</span><span class="p">)),</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="c1"># lets add the 25th &amp; 75th quantiles</span><span class="w">
+</span><span class="n">lines</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">median</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="m">-0.5</span><span class="o">*</span><span class="n">IQR</span><span class="p">(</span><span class="n">time</span><span class="p">),</span><span class="n">median</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="m">+0.5</span><span class="o">*</span><span class="n">IQR</span><span class="p">(</span><span class="n">time</span><span class="p">)),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1.5</span><span class="p">,</span><span class="m">1.5</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># again, lets add a little legend</span><span class="w">
+</span><span class="n">legend</span><span class="p">(</span><span class="s2">"topright"</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s2">"STDDEV"</span><span class="p">,</span><span class="s2">"Quartiles"</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="s2">"red"</span><span class="p">),</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-nt3p2-1.png" title="plot of chunk nt3p2" alt="plot of chunk nt3p2" width="612" style="display: block; margin: auto;" /></p>
+
+<p>And let’s see how both of these change with adding my data point:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Old plot</span><span class="w">
+</span><span class="n">hist</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">breaks</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0.0</span><span class="p">,</span><span class="m">0.5</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">),</span><span class="n">freq</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="n">lines</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="m">-0.5</span><span class="o">*</span><span class="n">sd</span><span class="p">(</span><span class="n">time</span><span class="p">),</span><span class="n">mean</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="m">+0.5</span><span class="o">*</span><span class="n">sd</span><span class="p">(</span><span class="n">time</span><span class="p">)),</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">lines</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">median</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="m">-0.5</span><span class="o">*</span><span class="n">IQR</span><span class="p">(</span><span class="n">time</span><span class="p">),</span><span class="n">median</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="m">+0.5</span><span class="o">*</span><span class="n">IQR</span><span class="p">(</span><span class="n">time</span><span class="p">)),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1.5</span><span class="p">,</span><span class="m">1.5</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">legend</span><span class="p">(</span><span class="s2">"topright"</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s2">"STDDEV"</span><span class="p">,</span><span class="s2">"Quartiles"</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="s2">"red"</span><span class="p">),</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># new points</span><span class="w">
+</span><span class="n">lines</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">new_time</span><span class="p">)</span><span class="m">-0.5</span><span class="o">*</span><span class="n">sd</span><span class="p">(</span><span class="n">new_time</span><span class="p">),</span><span class="n">mean</span><span class="p">(</span><span class="n">new_time</span><span class="p">)</span><span class="m">+0.5</span><span class="o">*</span><span class="n">sd</span><span class="p">(</span><span class="n">new_time</span><span class="p">)),</span><span class="w">
+      </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">lines</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">median</span><span class="p">(</span><span class="n">new_time</span><span class="p">)</span><span class="m">-0.5</span><span class="o">*</span><span class="n">IQR</span><span class="p">(</span><span class="n">new_time</span><span class="p">),</span><span class="n">median</span><span class="p">(</span><span class="n">new_time</span><span class="p">)</span><span class="m">+0.5</span><span class="o">*</span><span class="n">IQR</span><span class="p">(</span><span class="n">new_time</span><span class="p">)),</span><span class="w"> 
+      </span><span class="nf">c</span><span class="p">(</span><span class="m">1.5</span><span class="p">,</span><span class="m">1.5</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-nt4p2-1.png" title="plot of chunk nt4p2" alt="plot of chunk nt4p2" width="612" style="display: block; margin: auto;" /></p>
+
+<p>So, we also see that while the standdard deviation changes a lot with new and very different data, the quantiles do not (as much) – also something interesting to consider in characterizing data!</p>
+
+<h2 id="a-few-more-things-we-can-do-with-data">A few more things we can do with data</h2>
+
+<p>In RStudio, there a few helpful things you can try, like:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">View</span><span class="p">(</span><span class="n">classData</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Or double clicking on “classData” in the “Global Environment” panel.</p>
+
+<p>We can make a dotchart of the programming time range:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dotchart</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">xlab</span><span class="o">=</span><span class="s2">"Programming Age"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-dc1p2-1.png" title="plot of chunk dc1p2" alt="plot of chunk dc1p2" width="612" style="display: block; margin: auto;" />
+We can sort of see that there are a lot of dots $\lesssim$ 1 year, and a few at 3 years.</p>
+
+<p>Note here: y-axis means nothing for dotcharts.</p>
+
+<p>Can also see that in a boxplot:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">boxplot</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-bp1p2-1.png" title="plot of chunk bp1p2" alt="plot of chunk bp1p2" width="612" style="display: block; margin: auto;" /></p>
+
+<p>Note: we would usually have whiskers at the tops <em>and</em> bottoms but this can be different for different distributions.</p>
+
+<p>Maybe lets remind ourselves of what we are plotting:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">boxplot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">ylab</span><span class="o">=</span><span class="s2">"Programming Age"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-bp2p2-1.png" title="plot of chunk bp2p2" alt="plot of chunk bp2p2" width="612" style="display: block; margin: auto;" /></p>
+
+<p>For this last one, lets also overlay the boxplot for newtime too:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">boxplot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">new_time</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"green"</span><span class="p">,</span><span class="s2">"purple"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-bp3p2-1.png" title="plot of chunk bp3p2" alt="plot of chunk bp3p2" width="612" style="display: block; margin: auto;" />
+… and lets add a little legend too:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">boxplot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">new_time</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"green"</span><span class="p">,</span><span class="s2">"purple"</span><span class="p">))</span><span class="w">
+</span><span class="n">legend</span><span class="p">(</span><span class="s2">"topleft"</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s2">"Programming Age"</span><span class="p">,</span><span class="s2">"New Programming Age"</span><span class="p">),</span><span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"green"</span><span class="p">,</span><span class="s2">"purple"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="../fig/rmd-bp4p2-1.png" title="plot of chunk bp4p2" alt="plot of chunk bp4p2" width="612" style="display: block; margin: auto;" /></p>
+
+<p>Now we can see that again - the boxplots don’t change a huge amount, only the new age one now includes an outlier point for my old-person programming age.</p>
+
+<p>There are also a bunch of parameters you can change with boxplots we aren’t going to get into here.</p>
 
 
 

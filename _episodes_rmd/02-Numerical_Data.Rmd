@@ -245,3 +245,118 @@ Let's look at some summary stats for our data for how long folks have been progr
 summary(time)
 ```
 
+Let's over plot where these are on our histograms using another plotting function called `abline` that overplots lines on our plots:
+```{r f9p2, warning=FALSE}
+hist(time,breaks=c(0.0,0.5,1,2,4,5),freq=TRUE)
+
+abline(v = mean(time), col = "blue", lwd = 2)
+abline(v = median(time), col = "red", lwd = 2)
+```
+
+Let's also add a legend:
+```{r f10p2, warning=FALSE}
+hist(time,breaks=c(0.0,0.5,1,2,4,5),freq=TRUE)
+
+abline(v = mean(time), col = "blue", lwd = 2)
+abline(v = median(time), col = "red", lwd = 2)
+
+legend("topright",c("Mean","Median"),col=c("blue","red"),lwd=2)
+```
+
+Something to think about - does the mean or median describe the distribution better here?  What do they mean if the box sizes are different?  Keep this thoughts with you over the next few classes.
+
+Now let's say we add the data of an old person in like myself that has been programming for a bit:
+```{r nt1p2}
+new_time = c(time,18.0)
+```
+
+Let's overplot the mean and median of our new time on our old histogram:
+```{r nt2p2, warning=FALSE}
+# old plot
+hist(time,breaks=c(0.0,0.5,1,2,4,5),freq=TRUE)
+abline(v = mean(time), col = "blue", lwd = 2)
+abline(v = median(time), col = "red", lwd = 2)
+legend("topright",c("Mean","Median"),col=c("blue","red"),lwd=2)
+
+# new additions
+abline(v=mean(new_time),col="blue",lwd=4,lty=2)
+abline(v=median(new_time),col="red",lwd=4,lty=2)
+```
+
+We see that the mean changes a lot, BUT the median does not $\rightarrow$ this is very interesting to think about when we want to characterize our data.
+
+Let's try the same exercise with the standdard deviation and the interquartile range (IQR).  This time we'll try making some lines on our plot using the `lines` function instead of `abline` for some variety, first with our original dataset:
+```{r nt3p2, warning=FALSE}
+hist(time,breaks=c(0.0,0.5,1,2,4,5),freq=TRUE)
+
+#  Usually (and later on in class) we'll talk about full STDDEV's around the mean, 
+#    but 1/2 STDDEV is a little easier to see here
+lines(c(mean(time)-0.5*sd(time),mean(time)+0.5*sd(time)),c(2,2), col="blue",lwd=2)
+# lets add the 25th & 75th quantiles
+lines(c(median(time)-0.5*IQR(time),median(time)+0.5*IQR(time)), c(1.5,1.5), col="red",lwd=2)
+
+# again, lets add a little legend
+legend("topright",c("STDDEV","Quartiles"),col=c("blue","red"),lwd=2)
+```
+
+And let's see how both of these change with adding my data point:
+```{r nt4p2, warning=FALSE}
+# Old plot
+hist(time,breaks=c(0.0,0.5,1,2,4,5),freq=TRUE)
+lines(c(mean(time)-0.5*sd(time),mean(time)+0.5*sd(time)),c(2,2), col="blue",lwd=2)
+lines(c(median(time)-0.5*IQR(time),median(time)+0.5*IQR(time)), c(1.5,1.5), col="red",lwd=2)
+legend("topright",c("STDDEV","Quartiles"),col=c("blue","red"),lwd=2)
+
+# new points
+lines(c(mean(new_time)-0.5*sd(new_time),mean(new_time)+0.5*sd(new_time)),
+      c(2,2), col="blue",lwd=4, lty=2)
+lines(c(median(new_time)-0.5*IQR(new_time),median(new_time)+0.5*IQR(new_time)), 
+      c(1.5,1.5), col="red",lwd=2,lty=2)
+```
+
+So, we also see that while the standdard deviation changes a lot with new and very different data, the quantiles do not (as much) -- also something interesting to consider in characterizing data!
+
+## A few more things we can do with data
+
+In RStudio, there a few helpful things you can try, like:
+
+~~~
+View(classData)
+~~~
+{: .language-r}
+
+Or double clicking on "classData" in the "Global Environment" panel.
+
+We can make a dotchart of the programming time range:
+```{r dc1p2}
+dotchart(time,xlab="Programming Age")
+```
+We can sort of see that there are a lot of dots $\lesssim$ 1 year, and a few at 3 years.
+
+Note here: y-axis means nothing for dotcharts.
+
+Can also see that in a boxplot:
+```{r bp1p2}
+boxplot(time)
+```
+
+Note: we would usually have whiskers at the tops *and* bottoms but this can be different for different distributions.
+
+Maybe lets remind ourselves of what we are plotting:
+```{r bp2p2}
+boxplot(time,ylab="Programming Age")
+```
+
+For this last one, lets also overlay the boxplot for newtime too:
+```{r bp3p2}
+boxplot(time,new_time, col=c("green","purple"))
+```
+... and lets add a little legend too:
+```{r bp4p2}
+boxplot(time,new_time, col=c("green","purple"))
+legend("topleft",c("Programming Age","New Programming Age"),fill=c("green","purple"))
+```
+
+Now we can see that again - the boxplots don't change a huge amount, only the new age one now includes an outlier point for my old-person programming age.
+
+There are also a bunch of parameters you can change with boxplots we aren't going to get into here.
