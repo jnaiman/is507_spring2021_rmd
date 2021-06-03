@@ -10,7 +10,6 @@ autoBuildRmd(){
     do
 	cd $1; while :; do clear; make lesson-md; sleep 1; done
     done
-    #alias updateAg='cd /Users/jillnaiman/trial-lesson_ag; while :; do clear; make lesson-md; sleep 1; done'
 }
 ```
 

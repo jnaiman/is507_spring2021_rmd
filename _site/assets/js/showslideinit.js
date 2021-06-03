@@ -35,9 +35,24 @@ var MYLIBRARY = MYLIBRARY || (function(){
             _args = Args;
             // some other initialising
         },
-        helloWorld : function() {
+        showSlidesInitial : function() {
+	    var slideIndex = _args[0];
+	    var slideId = _args[1];
+	    var n = _args[2];
+	    var no = _args[3];
             //alert('Hello World! -' + _args[0]);
-	    console.log(_args[0]);
+	    //console.log(_args[0]);
+	    //console.log(_args[1]);
+	    console.log(slideIndex, slideId, n, no);
+
+	    var i;
+	    var x = document.getElementsByClassName(slideId[no]);
+	    if (n > x.length) {slideIndex[no] = 1}    
+	    if (n < 1) {slideIndex[no] = x.length}
+	    for (i = 0; i < x.length; i++) {
+		x[i].style.display = "none";
+	    }
+	    x[slideIndex[no]-1].style.display = "block";  
         }
     };
 }());

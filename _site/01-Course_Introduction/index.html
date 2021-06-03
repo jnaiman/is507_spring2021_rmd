@@ -19,7 +19,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2021-06-03 15:23:43 -0500">
+    <meta http-equiv="last-modified" content="2021-06-03 18:14:30 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -623,8 +623,10 @@ slideshowLib.showSlidesInitial();
 <script type="text/javascript" src="../assets/js/showslideinit.js"></script>
 
 <script type="text/javascript">
-   MYLIBRARY.init(["somevalue", 1, "controlId"]);
-   MYLIBRARY.helloWorld();
+var slideIndex = [1];
+var slideId = ['mySlides1p1'];
+MYLIBRARY.init([slideIndex, slideId, 1, 0]); //, 1, "controlId"]);
+MYLIBRARY.showSlidesInitial();
 </script>
 
 <h2 id="tips-for-the-homework">Tips for the Homework</h2>
