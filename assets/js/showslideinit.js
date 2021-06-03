@@ -27,7 +27,7 @@
 //    };
 //}());
 
-var MYLIBRARY = MYLIBRARY || (function(){
+var showSlidesLib = showSlidesLib || (function(){
     var _args = {}; // private
 
     return {
@@ -43,7 +43,7 @@ var MYLIBRARY = MYLIBRARY || (function(){
             //alert('Hello World! -' + _args[0]);
 	    //console.log(_args[0]);
 	    //console.log(_args[1]);
-	    console.log(slideIndex, slideId, n, no);
+	    //console.log(slideIndex, slideId, n, no);
 
 	    var i;
 	    var x = document.getElementsByClassName(slideId[no]);

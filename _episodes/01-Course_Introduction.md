@@ -445,8 +445,8 @@ slideshowLib.showSlidesInitial();
 <script type="text/javascript">
 var slideIndex = [1];
 var slideId = ['mySlides1p1'];
-MYLIBRARY.init([slideIndex, slideId, 1, 0]); //, 1, "controlId"]);
-MYLIBRARY.showSlidesInitial();
+showSlidesLib.init([slideIndex, slideId, 1, 0]); //, 1, "controlId"]);
+showSlidesLib.showSlidesInitial();
 </script>
 
 ## Tips for the Homework
