@@ -1,3 +1,5 @@
+
+
 //var slideIndex = 1;
 //showSlides(slideIndex, slideId);
 
@@ -64,13 +66,20 @@ function currentSlide(n, no) {
 
 
 function showSlides(n, no) {
+    //console.log('here1');
   var i;
-  var x = document.getElementsByClassName(slideId[no]);
+    var x = document.getElementsByClassName(slideId[no]);
+    //console.log('x.length=');
+    //console.log(x.length);
   if (n > x.length) {slideIndex[no] = 1}    
   if (n < 1) {slideIndex[no] = x.length}
   for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";  
+      x[i].style.display = "none";
+      //console.log('here');
   }
     //console.log(slideId[no]);
+    //console.log(slideIndex[no]-1);
+    //console.log(slideIndex);
+    //console.log(x);
   x[slideIndex[no]-1].style.display = "block";  
 }

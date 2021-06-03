@@ -19,7 +19,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2021-06-02 19:16:43 -0500">
+    <meta http-equiv="last-modified" content="2021-06-03 15:23:43 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -561,13 +561,12 @@ how data was procured)?</li>
 
 <style>
 .mySlides1p1 {display: none}
-img {vertical-align: middle;}
 </style>
 
-<script>
+<!--<script>
 var slideIndex = [1];
 var slideId = ['mySlides1p1'];
-</script>
+</script>-->
 
 <div class="slideshow-container">
 
@@ -606,9 +605,26 @@ var slideId = ['mySlides1p1'];
   <span class="dot" onclick="currentSlide(3)"></span>
 </div>-->
 
+<script src="../assets/js/slideshow.js"></script>
+
 <!-- Actually run the script -->
-<script src="../assets/js/slideshow.js">
-showSlides(1,0);
+<!--<script type="text/javascript" src="../assets/js/showslideinit.js">
+//showSlides(1,0);
+//var x = document.getElementsByClassName(slideId[0]);
+//x[slideIndex[0]-1].style.display = "block";  
+</script>
+<script type="text/javascript">
+var slideIndex = [1];
+var slideId = ['mySlides1p1'];
+slideshowLib.init(0,1,slideId,slideIndex);
+slideshowLib.showSlidesInitial();
+</script>-->
+
+<script type="text/javascript" src="../assets/js/showslideinit.js"></script>
+
+<script type="text/javascript">
+   MYLIBRARY.init(["somevalue", 1, "controlId"]);
+   MYLIBRARY.helloWorld();
 </script>
 
 <h2 id="tips-for-the-homework">Tips for the Homework</h2>
