@@ -19,7 +19,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2021-06-04 15:32:00 -0500">
+    <meta http-equiv="last-modified" content="2021-06-04 16:16:25 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -557,88 +557,64 @@ how data was procured)?</li>
 
 <!-- Slideshow container -->
 <!-- this one: https://www.w3schools.com/howto/howto_js_slideshow.asp -->
+<!-- for multiple: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_slideshow_multiple -->
 <!-- also, for embed: https://stackoverflow.com/questions/2104608/hiding-the-toolbars-surrounding-an-embedded-pdf -->
 
+<!-- initialize all slides to no display -->
 <style>
 .mySlides1p1 {display: none}
 </style>
 
-<!--<script>
-var slideIndex = [1];
-var slideId = ['mySlides1p1'];
-</script>-->
-
-<!--
+<!-- each slide show -->
 <div class="slideshow-container">
 
-  <div class="mySlides1p1 fade" >
+  <div class="mySlides1p1 fade">
     <div class="numbertext">1 / 3</div>
-    <embed src="../lectureSlides/week01/slide1.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%" />
+    <embed src="../lectureSlides/week01/slide1.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0" style="width:100%" />
     <div class="text">Some of these may look familar but some might be new -- the mean, median and quartiles might be new.</div>
   </div>
 
   <div class="mySlides1p1 fade">
     <div class="numbertext">2 / 3</div>
-    <embed src="../lectureSlides/week01/slide2.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%"/>
+    <embed src="../lectureSlides/week01/slide2.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0" style="width:100%" />
     <div class="text">Mean and Median represent the typical value of your numerical dataset.</div>
   </div>
   
   <div class="mySlides1p1 fade">
     <div class="numbertext">3 / 3</div>
-    <embed src="../lectureSlides/week01/slide3.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%"/>
+    <embed src="../lectureSlides/week01/slide3.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0" style="width:100%" />
     <div class="text">Standard deviation and quartiles give measures of the variability in the data.</div>
   </div>
 
-
-
-  <a class="prev" onclick="showSlidesLib.plusSlides(-1,0)">&#10094;</a>
-  <a class="next" onclick="showSlidesLib.plusSlides(1,0)">&#10095;</a>
+  <!-- (n, number of slide show) -->
+  <a class="prev" onclick="plusSlides(-1,0)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1,0)">&#10095;</a>
 </div>
-<br>
+<p><br /></p>
 
-
-
-<script type="text/javascript" src="../assets/js/showslideinit.js"></script>
-<script type="text/javascript">
-var slideIndex = [1];
-var slideId = ['mySlides1p1'];
-
-// no, n are last 2
-showSlidesLib.init([slideIndex, slideId, 0, 1]); 
-//, 1, "controlId"]);
-showSlidesLib.showSlidesInitial();
-</script>
--->
-
-<style>
-.pdfobject-container { 
-height:800px;
-overflow:hidden;
-}
-</style>
-
-<div id="example1"></div>
-<div class="text">Stuff goes here</div>
-
-<script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.5/pdfobject.min.js"></script>
-
+<!-- script for each slideshow -->
 <script>
-var options = {
-   width: "20rem",
-   height: "20rem"
-};
-PDFObject.embed('../lectureSlides/week01/lecture1_out1.pdf#toolbar=0&navpanes=0&scrollbar=0', "#example1");
+var slideIndex = [1]; //,1];
+var slideId = ["mySlides1p1"]; //, "PLACEHOLDER"]
+console.log(slideIndex, slideId);
+showSlides(1, 0);
+//showSlides(1, 1);
 
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  var i;
+  var x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}    
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex[no]-1].style.display = "block";  
+}
 </script>
-
-<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.js"></script>
-
-<div id="holder"></div>
-
-<script type="text/javascript">
-
-renderPDF('../lectureSlides/week01/lecture1.pdf', document.getElementById('holder'));
-</script>-->
 
 <h2 id="tips-for-the-homework">Tips for the Homework</h2>
 
