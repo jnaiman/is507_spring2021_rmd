@@ -395,19 +395,19 @@ var slideId = ['mySlides1p1'];
   <div class="mySlides1p1 fade" >
     <div class="numbertext">1 / 3</div>
     <!--<img src="../lectureSlides/week01/slide1.jpg" style="width:100%">-->
-    <embed src="../lectureSlides/week01/slide1.pdf#toolbar=0&navpanes=0&scrollbar=0"/>
+    <embed src="../lectureSlides/week01/slide1.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%" />
     <div class="text">Some of these may look familar but some might be new -- the mean, median and quartiles might be new.</div>
   </div>
 
   <div class="mySlides1p1 fade">
     <div class="numbertext">2 / 3</div>
-    <embed src="../lectureSlides/week01/slide2.pdf#toolbar=0&navpanes=0&scrollbar=0" />
+    <embed src="../lectureSlides/week01/slide2.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%"/>
     <div class="text">Mean and Median represent the typical value of your numerical dataset.</div>
   </div>
   
   <div class="mySlides1p1 fade">
     <div class="numbertext">3 / 3</div>
-    <embed src="../lectureSlides/week01/slide3.pdf#toolbar=0&navpanes=0&scrollbar=0" />
+    <embed src="../lectureSlides/week01/slide3.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%"/>
     <div class="text">Standard deviation and quartiles give measures of the variability in the data.</div>
   </div>
 
@@ -426,7 +426,7 @@ var slideId = ['mySlides1p1'];
   <span class="dot" onclick="currentSlide(3)"></span>
 </div>-->
 
-<script src="../assets/js/slideshow.js"></script>
+<!--<script src="../assets/js/slideshow.js"></script>-->
 
 <!-- Actually run the script -->
 <!--<script type="text/javascript" src="../assets/js/showslideinit.js">
@@ -437,7 +437,10 @@ var slideId = ['mySlides1p1'];
 <script type="text/javascript">
 var slideIndex = [1];
 var slideId = ['mySlides1p1'];
-slideshowLib.init(0,1,slideId,slideIndex);
+//$(window).trigger('scroll');
+//$('mySlides1p1').lazyload();
+
+slideshowLib.init(slideId,slideIndex,0,1);
 slideshowLib.showSlidesInitial();
 </script>-->
 

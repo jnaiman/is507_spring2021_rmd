@@ -361,9 +361,9 @@ Now we can see that again - the boxplots don't change a huge amount, only the ne
 
 There are also a bunch of parameters you can change with boxplots we aren't going to get into here.
 
-<style>
-.mySlides1p2 {display: "none"}
-</style>
+<!--<style>
+.mySlides1p2 {display: none; overflow:hidden}
+</style>-->
 
 <div class="slideshow-container">
 
@@ -400,7 +400,13 @@ var slideIndex = [1];
 var slideId = ['mySlides1p2'];
 showSlidesLib.init([slideIndex, slideId, 1, 0]); //, 1, "controlId"]);
 showSlidesLib.showSlidesInitial();
-//showSlidesLib.showSlides(1,0);
+showSlidesLib.showSlides(1,0);
+//document.querySelector(".prev").addEventListener("click", () => {
+//   showSlidesLib.plusSlides(-1,0);
+//});
+//document.querySelector(".next").addEventListener("click", () => {
+//   showSlidesLib.plusSlides(-1,0);
+//});
 </script>
 
 <!--<script src="../assets/js/slideshow.js"></script>-->

@@ -433,6 +433,7 @@ img {vertical-align: middle;}
   max-width: 1000px;
   position: relative;
   margin: auto;
+  overflow:hidden;
 }
 
 /* Next & previous buttons */
@@ -460,7 +461,7 @@ img {vertical-align: middle;}
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
     background-color: rgba(0,0,0,0.8);
-    color: black;
+    //color: black;
 }
 
 /* Caption text */
