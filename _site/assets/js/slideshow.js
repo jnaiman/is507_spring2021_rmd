@@ -1,24 +1,75 @@
-function plusSlides(n, no) {
-  showSlides(slideIndex[no] += n, no);
-}
+(function() {
+	function Slideshow(element) {
+		this.el = document.querySelector(element);
+		this.init();
+	}
+	Slideshow.prototype = {
+		init: function() {
+			this.wrapper = this.el.querySelector(".slider-wrapper");
+			this.slides = this.el.querySelectorAll(".slide");
+			this.previous = this.el.querySelector(".slider-previous");
+			this.next = this.el.querySelector(".slider-next");
+			this.index = 0;
+			this.total = this.slides.length;
+			this.actions();
+		},
+		_slideTo: function(slide) {
+			var currentSlide = this.slides[slide];
+			this.wrapper.style.left = "-" + currentSlide.offsetLeft + "px";
+		},
+		actions: function() {
+			var self = this;
+			self.next.addEventListener("click", function() {
+				self.index++;
+				self.previous.style.display = "block";
+				if (self.index == self.total - 1) {
+					self.index = self.total - 1;
+					self.next.style.display = "none";
+				}
+				self._slideTo(self.index);
+			}, false);
+			self.previous.addEventListener("click", function() {
+				self.index--;
+				self.next.style.display = "block";
+				if (self.index == 0) {
+					self.index = 0;
+					self.previous.style.display = "none";
+				}
+				self._slideTo(self.index);
+			}, false);
+		}
+	};
+	document.addEventListener("DOMContentLoaded", function() {
+		var slider = new Slideshow("#main-slider");
+	});
+})();
 
 
-function currentSlide(n, no) {
-    showSlides(slideIndex[no] = n, no);
-}
 
+function renderPDF(url, canvasContainer, options) {
+    var options = options || { scale: 1 };
 
+    function renderPage(page) {
+        var viewport = page.getViewport(options.scale);
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');
+        var renderContext = {
+          canvasContext: ctx,
+          viewport: viewport
+        };
 
-function showSlides(n, no) {
-    var i;
-    var x = document.getElementsByClassName(slideId[no]);
-    if (n > x.length) {slideIndex[no] = 1}    
-    if (n < 1) {slideIndex[no] = x.length}
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        canvasContainer.appendChild(canvas);
 
-    // this turns all of the slides "off"
-    for (i = 0; i < x.length; i++) {
-	x[i].style.display = "none";
+        page.render(renderContext);
     }
-    x[slideIndex[no]-1].style.display = "block";
-    //console.log(slideIndex[no]-1);
-}
+
+    function renderPages(pdfDoc) {
+        for(var num = 1; num <= pdfDoc.numPages; num++)
+            pdfDoc.getPage(num).then(renderPage);
+    }
+    PDFJS.disableWorker = true;
+    PDFJS.getDocument(url).then(renderPages);
+}   
+ 

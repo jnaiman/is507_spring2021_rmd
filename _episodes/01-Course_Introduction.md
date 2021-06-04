@@ -389,12 +389,11 @@ var slideIndex = [1];
 var slideId = ['mySlides1p1'];
 </script>-->
 
+<!--
 <div class="slideshow-container">
 
-  <!-- Full-width images with number and caption text -->
   <div class="mySlides1p1 fade" >
     <div class="numbertext">1 / 3</div>
-    <!--<img src="../lectureSlides/week01/slide1.jpg" style="width:100%">-->
     <embed src="../lectureSlides/week01/slide1.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%" />
     <div class="text">Some of these may look familar but some might be new -- the mean, median and quartiles might be new.</div>
   </div>
@@ -413,44 +412,59 @@ var slideId = ['mySlides1p1'];
 
 
 
-  <!-- Next and previous buttons -->
   <a class="prev" onclick="showSlidesLib.plusSlides(-1,0)">&#10094;</a>
   <a class="next" onclick="showSlidesLib.plusSlides(1,0)">&#10095;</a>
 </div>
 <br>
 
-<!-- The dots/circles -->
-<!--<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-</div>-->
 
-<!--<script src="../assets/js/slideshow.js"></script>-->
-
-<!-- Actually run the script -->
-<!--<script type="text/javascript" src="../assets/js/showslideinit.js">
-//showSlides(1,0);
-//var x = document.getElementsByClassName(slideId[0]);
-//x[slideIndex[0]-1].style.display = "block";  
-</script>
-<script type="text/javascript">
-var slideIndex = [1];
-var slideId = ['mySlides1p1'];
-//$(window).trigger('scroll');
-//$('mySlides1p1').lazyload();
-
-slideshowLib.init(slideId,slideIndex,0,1);
-slideshowLib.showSlidesInitial();
-</script>-->
 
 <script type="text/javascript" src="../assets/js/showslideinit.js"></script>
 <script type="text/javascript">
 var slideIndex = [1];
 var slideId = ['mySlides1p1'];
-showSlidesLib.init([slideIndex, slideId, 1, 0]); //, 1, "controlId"]);
+
+// no, n are last 2
+showSlidesLib.init([slideIndex, slideId, 0, 1]); 
+//, 1, "controlId"]);
 showSlidesLib.showSlidesInitial();
 </script>
+-->
+
+
+
+
+
+<style>
+.pdfobject-container { 
+height:800px;
+overflow:hidden;
+}
+</style>
+
+<div id="example1"></div>
+<div class="text">Stuff goes here</div>
+
+<script src="https://cdn.jsdelivr.net/npm/pdfobject@2.2.5/pdfobject.min.js"></script>
+<script>
+var options = {
+   width: "20rem",
+   height: "20rem"
+};
+PDFObject.embed('../lectureSlides/week01/lecture1_out1.pdf#toolbar=0&navpanes=0&scrollbar=0', "#example1");
+
+</script>
+
+
+<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.js"></script>
+
+<div id="holder"></div>
+
+<script type="text/javascript">
+
+renderPDF('../lectureSlides/week01/lecture1.pdf', document.getElementById('holder'));
+</script>-->
+
 
 ## Tips for the Homework
 

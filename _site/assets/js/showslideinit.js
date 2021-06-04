@@ -29,6 +29,8 @@
 
 var showSlidesLib = showSlidesLib || (function(){
     var _args = {}; // private
+
+    // private indicies
     var slideIndex;
     var slideId;
     var no;
@@ -59,8 +61,10 @@ var showSlidesLib = showSlidesLib || (function(){
 	    no = _args[2];
 	    n = _args[3];
 	    console.log(slideIndex);
-	    console.log(slideId);
-	    console.log(no, n);
+	    console.log(no);
+	    console.log(slideIndex[no]);
+	    console.log(slideIndex[0]);
+	    console.log('end initial')
         },
         showSlidesInitial : function() {
 	    //var slideIndex = _args[0];
@@ -80,8 +84,13 @@ var showSlidesLib = showSlidesLib || (function(){
 		x[i].style.display = "none";
 	    }
 	    x[slideIndex[no]-1].style.display = "block";
+
+	    //console.log(n, no);
+	    //console.log('end initial showslides');
+
         },
-	showSlides : function(n,no) {
+	//showSlides : function(n,no) {
+	showSlides : function(noin) {
 	    //var slideIndex = _args[0];
 	    //var slideId = _args[1];
 	    //var n = _args[2];
@@ -95,18 +104,18 @@ var showSlidesLib = showSlidesLib || (function(){
 	    //$('#' + slideId[no]).hide().show(0);
 	    //console.log('#' + slideId[no]);
 
-	    var x = document.getElementsByClassName(slideId[no]);
+	    var x = document.getElementsByClassName(slideId[noin]);
 	    //console.log(x);
 	    //x[slideIndex[no]-1].style.display = "block";
-	    if (n > x.length) {slideIndex[no] = 1}    
-	    if (n < 1) {slideIndex[no] = x.length}
+	    if (n > x.length) {slideIndex[noin] = 1}    
+	    if (n < 1) {slideIndex[noin] = x.length}
 	    for (i = 0; i < x.length; i++) {
 		//x[i].style.display = "block";
 		x[i].style.display = "none";
 		//x[i].style.display = "block";
 		//x[i].offsetHeight;
 	    }
-	    x[slideIndex[no]-1].style.display = "block";
+	    x[slideIndex[noin]-1].style.display = "block";
 	    //x[slideIndex[no]-1].style.display = "block";
 	    //forceRedraw(x[slideIndex[no]-1]);
 	    //x[slideIndex[no]-1].show(0);
@@ -115,15 +124,24 @@ var showSlidesLib = showSlidesLib || (function(){
 	    //_args[2] = slideIndex[no]-1;
 	    //console.log('args here', _args[2]);
 	    //console.log(slideIndex[no]-1);
-	    console.log('here 2');
+
+	    console.log('noin=',noin, 'index=',slideIndex[noin], 'n=',n);
+	    console.log('end show slides');
+
 
         },
-	plusSlides: function(n,no) {
+	plusSlides: function(nin,noin) {
 	    //var slideIndex = _args[0];
 	    //var slideId = _args[1];
-	    showSlidesLib.showSlides(slideIndex[no] += n, no);
-	    console.log('here');
+	    //showSlidesLib.showSlides(slideIndex[no] += n, no);
+	    //console.log('here');
 	    //console.log(n,no);
+	    n = slideIndex[noin]+nin;
+	    console.log('n before=',n);
+	    //no = noin;
+	    showSlidesLib.showSlides(noin);
+	    console.log('n=',n, 'no=',no, 'nin=',nin);
+	    console.log('end plus');
 	}
 
     }; // end of return
