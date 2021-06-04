@@ -914,3 +914,47 @@ legend("topleft",c("Programming Age","New Programming Age"),fill=c("green","purp
 Now we can see that again - the boxplots don't change a huge amount, only the new age one now includes an outlier point for my old-person programming age.
 
 There are also a bunch of parameters you can change with boxplots we aren't going to get into here.
+
+<style>
+.mySlides1p2 {display: "none"}
+</style>
+
+<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides1p2" >
+    <div class="numbertext">1 / 3</div>
+    <embed src="../lectureSlides/week01/slide1.pdf#toolbar=0&navpanes=0&scrollbar=0"/>
+    <div class="text">Some of these may look familar but some might be new -- the mean, median and quartiles might be new.</div>
+  </div>
+
+  <div class="mySlides1p2">
+    <div class="numbertext">2 / 3</div>
+    <embed src="../lectureSlides/week01/slide2.pdf#toolbar=0&navpanes=0&scrollbar=0" />
+    <div class="text">Mean and Median represent the typical value of your numerical dataset.</div>
+  </div>
+  
+  <div class="mySlides1p2">
+    <div class="numbertext">3 / 3</div>
+    <embed src="../lectureSlides/week01/slide3.pdf#toolbar=0&navpanes=0&scrollbar=0" />
+    <div class="text">Standard deviation and quartiles give measures of the variability in the data.</div>
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="showSlidesLib.plusSlides(-1,0)">&#10094;</a>
+  <a class="next" onclick="showSlidesLib.plusSlides(1,0)">&#10095;</a>
+</div>
+<br>
+
+
+<!-- Actually run the script -->
+<script type="text/javascript" src="../assets/js/showslideinit.js"></script>
+<script type="text/javascript">
+var slideIndex = [1];
+var slideId = ['mySlides1p2'];
+showSlidesLib.init([slideIndex, slideId, 1, 0]); //, 1, "controlId"]);
+showSlidesLib.showSlidesInitial();
+//showSlidesLib.showSlides(1,0);
+</script>
+
+<!--<script src="../assets/js/slideshow.js"></script>-->

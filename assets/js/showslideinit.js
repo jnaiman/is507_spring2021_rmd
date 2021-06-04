@@ -29,17 +29,23 @@
 
 var showSlidesLib = showSlidesLib || (function(){
     var _args = {}; // private
+    var slideIndex;
+    var slideId;
+    var no;
 
     return {
         init : function(Args) {
             _args = Args;
             // some other initialising
+	    slideIndex = _args[0];
+	    slideId = _args[1];
+	    no = _args[3];
         },
         showSlidesInitial : function() {
-	    var slideIndex = _args[0];
-	    var slideId = _args[1];
+	    //var slideIndex = _args[0];
+	    //var slideId = _args[1];
 	    var n = _args[2];
-	    var no = _args[3];
+	    //var no = _args[3];
             //alert('Hello World! -' + _args[0]);
 	    //console.log(_args[0]);
 	    //console.log(_args[1]);
@@ -53,6 +59,39 @@ var showSlidesLib = showSlidesLib || (function(){
 		x[i].style.display = "none";
 	    }
 	    x[slideIndex[no]-1].style.display = "block";  
-        }
+        },
+	showSlides : function(n,no) {
+	    //var slideIndex = _args[0];
+	    //var slideId = _args[1];
+	    //var n = _args[2];
+	    //var no = _args[3];
+            //alert('Hello World! -' + _args[0]);
+	    //console.log(_args[0]);
+	    //console.log(_args[1]);
+	    //console.log(slideIndex, slideId, n, no);
+
+	    var i;
+	    var x = document.getElementsByClassName(slideId[no]);
+	    //console.log(x);
+	    if (n > x.length) {slideIndex[no] = 1}    
+	    if (n < 1) {slideIndex[no] = x.length}
+	    for (i = 0; i < x.length; i++) {
+		x[i].style.display = "none";
+		//x[i].style.display = "block";
+	    }
+	    x[slideIndex[no]-1].style.display = "block";
+	    // return updates
+	    //_args[2] = slideIndex[no]-1;
+	    //console.log('args here', _args[2]);
+	    //console.log(slideIndex[no]-1);
+        },
+	plusSlides: function(n, no) {
+	    //var slideIndex = _args[0];
+	    //var slideId = _args[1];
+	    showSlidesLib.showSlides(slideIndex[no] += n, no);
+	    //console.log('here');
+	    //console.log(n,no);
+	}
+
     };
 }());
