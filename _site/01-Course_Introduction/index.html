@@ -19,7 +19,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2021-06-04 16:16:25 -0500">
+    <meta http-equiv="last-modified" content="2021-06-04 22:11:15 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -135,8 +135,6 @@
             
             <li><a href="../01-Course_Introduction/index.html">Course Intro & Motivation, Intro to R</a></li>
             
-            <li><a href="../02-Numerical_Data/index.html">Intro to Numerical Data, Continuing Intro to R</a></li>
-            
 	    <li role="separator" class="divider"></li>
             <li><a href="../aio/index.html">All in one page (Beta)</a></li>
           </ul>
@@ -211,7 +209,7 @@
   <div class="col-xs-1">
     <h3 class="text-right">
       
-      <a href="../02-Numerical_Data/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
       
     </h3>
   </div>
@@ -568,21 +566,24 @@ how data was procured)?</li>
 <!-- each slide show -->
 <div class="slideshow-container">
 
-  <div class="mySlides1p1 fade">
+  <div class="mySlides1p1">
     <div class="numbertext">1 / 3</div>
-    <embed src="../lectureSlides/week01/slide1.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0" style="width:100%" />
+    <!--<embed src="../lectureSlides/week01/slide1.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%" type="application/pdf" id='slide1'/>-->
+    <iframe id="slide1" src="../lectureSlides/week01/slide1.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0" style="width:100%"></iframe>
     <div class="text">Some of these may look familar but some might be new -- the mean, median and quartiles might be new.</div>
   </div>
 
-  <div class="mySlides1p1 fade">
+  <div class="mySlides1p1">
     <div class="numbertext">2 / 3</div>
-    <embed src="../lectureSlides/week01/slide2.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0" style="width:100%" />
+    <!--<embed src="../lectureSlides/week01/slide2.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%" type="application/pdf" id='slide2'/>-->
+    <iframe id="slide2" src="../lectureSlides/week01/slide2.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0" style="width:100%"></iframe>
     <div class="text">Mean and Median represent the typical value of your numerical dataset.</div>
   </div>
   
-  <div class="mySlides1p1 fade">
+  <div class="mySlides1p1">
     <div class="numbertext">3 / 3</div>
-    <embed src="../lectureSlides/week01/slide3.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0" style="width:100%" />
+    <!--<embed src="../lectureSlides/week01/slide3.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%" type="application/pdf" id='slide3'/>-->
+    <iframe id="slide3" src="../lectureSlides/week01/slide3.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0" style="width:100%"></iframe>
     <div class="text">Standard deviation and quartiles give measures of the variability in the data.</div>
   </div>
 
@@ -592,13 +593,17 @@ how data was procured)?</li>
 </div>
 <p><br /></p>
 
+<p>stuff1</p>
+
 <!-- script for each slideshow -->
 <script>
-var slideIndex = [1]; //,1];
-var slideId = ["mySlides1p1"]; //, "PLACEHOLDER"]
-console.log(slideIndex, slideId);
+var slideIndex = [1,1];
+var slideId = ["mySlides1p1", "PLACEHOLDER"]
+//console.log(slideIndex, slideId);
 showSlides(1, 0);
 //showSlides(1, 1);
+
+//console.log('YO');
 
 function plusSlides(n, no) {
   showSlides(slideIndex[no] += n, no);
@@ -609,10 +614,30 @@ function showSlides(n, no) {
   var x = document.getElementsByClassName(slideId[no]);
   if (n > x.length) {slideIndex[no] = 1}    
   if (n < 1) {slideIndex[no] = x.length}
+  console.log('n=',n, 'no=', no, 'xlength =', x.length);
   for (i = 0; i < x.length; i++) {
      x[i].style.display = "none";  
   }
-  x[slideIndex[no]-1].style.display = "block";  
+  x[slideIndex[no]-1].style.display = "block";
+  
+  //var y = document.getElementsByClassName(slideId[no]);
+  //x[slideIndex[no]-1].contentDocument.location.reload();
+  
+  var y = document.getElementById('slide1');
+  console.log(y);
+  
+  //.location.reload();
+  //y.contentDocument.location.reload();
+  //document.getElementById('slide2').location.reload();
+  //contentDocument.location.reload();
+  //document.getElementById('slide3').location.reload();
+  //y.contentDocument.location.reload();
+  
+  
+  //x[slideIndex[no]-1].contentDocument.location.reload();
+  //x[1].style.display = "block";  
+  //var y = document.getElementsByClassName(slideId[no]);
+  //y[slideIndex[no]-1].style.display = "block";  
 }
 </script>
 
@@ -1023,7 +1048,7 @@ coplot(weight ~ Time | Chick, data = ChickWeight,
   <div class="col-xs-1">
     <h3 class="text-right">
       
-      <a href="../02-Numerical_Data/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
       
     </h3>
   </div>

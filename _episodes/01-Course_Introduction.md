@@ -391,21 +391,24 @@ summary(after)
 <!-- each slide show -->
 <div class="slideshow-container">
 
-  <div class="mySlides1p1 fade" >
+  <div class="mySlides1p1" >
     <div class="numbertext">1 / 3</div>
-    <embed src="../lectureSlides/week01/slide1.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%" />
+    <!--<embed src="../lectureSlides/week01/slide1.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%" type="application/pdf" id='slide1'/>-->
+    <iframe id="slide1" src="../lectureSlides/week01/slide1.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%"></iframe>
     <div class="text">Some of these may look familar but some might be new -- the mean, median and quartiles might be new.</div>
   </div>
 
-  <div class="mySlides1p1 fade">
+  <div class="mySlides1p1">
     <div class="numbertext">2 / 3</div>
-    <embed src="../lectureSlides/week01/slide2.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%"/>
+    <!--<embed src="../lectureSlides/week01/slide2.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%" type="application/pdf" id='slide2'/>-->
+    <iframe id="slide2" src="../lectureSlides/week01/slide2.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%"></iframe>
     <div class="text">Mean and Median represent the typical value of your numerical dataset.</div>
   </div>
   
-  <div class="mySlides1p1 fade">
+  <div class="mySlides1p1">
     <div class="numbertext">3 / 3</div>
-    <embed src="../lectureSlides/week01/slide3.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%"/>
+    <!--<embed src="../lectureSlides/week01/slide3.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%" type="application/pdf" id='slide3'/>-->
+    <iframe id="slide3" src="../lectureSlides/week01/slide3.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width:100%"></iframe>
     <div class="text">Standard deviation and quartiles give measures of the variability in the data.</div>
   </div>
 
@@ -415,13 +418,17 @@ summary(after)
 </div>
 <br>
 
+stuff1
+
 <!-- script for each slideshow -->
 <script>
-var slideIndex = [1]; //,1];
-var slideId = ["mySlides1p1"]; //, "PLACEHOLDER"]
-console.log(slideIndex, slideId);
+var slideIndex = [1,1];
+var slideId = ["mySlides1p1", "PLACEHOLDER"]
+//console.log(slideIndex, slideId);
 showSlides(1, 0);
 //showSlides(1, 1);
+
+//console.log('YO');
 
 function plusSlides(n, no) {
   showSlides(slideIndex[no] += n, no);
@@ -432,10 +439,30 @@ function showSlides(n, no) {
   var x = document.getElementsByClassName(slideId[no]);
   if (n > x.length) {slideIndex[no] = 1}    
   if (n < 1) {slideIndex[no] = x.length}
+  console.log('n=',n, 'no=', no, 'xlength =', x.length);
   for (i = 0; i < x.length; i++) {
      x[i].style.display = "none";  
   }
-  x[slideIndex[no]-1].style.display = "block";  
+  x[slideIndex[no]-1].style.display = "block";
+  
+  //var y = document.getElementsByClassName(slideId[no]);
+  //x[slideIndex[no]-1].contentDocument.location.reload();
+  
+  var y = document.getElementById('slide1');
+  console.log(y);
+  
+  //.location.reload();
+  //y.contentDocument.location.reload();
+  //document.getElementById('slide2').location.reload();
+  //contentDocument.location.reload();
+  //document.getElementById('slide3').location.reload();
+  //y.contentDocument.location.reload();
+  
+  
+  //x[slideIndex[no]-1].contentDocument.location.reload();
+  //x[1].style.display = "block";  
+  //var y = document.getElementsByClassName(slideId[no]);
+  //y[slideIndex[no]-1].style.display = "block";  
 }
 </script>
 
