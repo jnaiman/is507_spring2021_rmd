@@ -257,7 +257,6 @@ summary(after)
 
 
 
-
 <!-- script for each slideshow -->
 <script>
 var slideIndex = [1,1];

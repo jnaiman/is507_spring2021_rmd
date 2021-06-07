@@ -365,6 +365,8 @@ There are also a bunch of parameters you can change with boxplots we aren't goin
 .mySlides1p2 {display: none; overflow:hidden}
 </style>-->
 
+<script src="../assets/js/slideshow.js"></script>
+
 <div class="slideshow-container">
 
   <!-- Full-width images with number and caption text -->
@@ -394,19 +396,10 @@ There are also a bunch of parameters you can change with boxplots we aren't goin
 
 
 <!-- Actually run the script -->
-<script type="text/javascript" src="../assets/js/showslideinit.js"></script>
-<script type="text/javascript">
-var slideIndex = [1];
-var slideId = ['mySlides1p2'];
-showSlidesLib.init([slideIndex, slideId, 1, 0]); //, 1, "controlId"]);
-showSlidesLib.showSlidesInitial();
-showSlidesLib.showSlides(1,0);
-//document.querySelector(".prev").addEventListener("click", () => {
-//   showSlidesLib.plusSlides(-1,0);
-//});
-//document.querySelector(".next").addEventListener("click", () => {
-//   showSlidesLib.plusSlides(-1,0);
-//});
+<script>
+var slideIndex = [1,1];
+var slideId = ["mySlides1p2", "PLACEHOLDER"]
+// order of last 2 is n, no -- no is the slideshow number for multiple slideshows
+showSlidesLib.init([slideIndex,slideId,1,0]);
+showSlidesLib.showSlides(1, 0);
 </script>
-
-<!--<script src="../assets/js/slideshow.js"></script>-->
