@@ -19,7 +19,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2021-06-04 22:11:15 -0500">
+    <meta http-equiv="last-modified" content="2021-06-07 17:01:25 -0500">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -559,9 +559,11 @@ how data was procured)?</li>
 <!-- also, for embed: https://stackoverflow.com/questions/2104608/hiding-the-toolbars-surrounding-an-embedded-pdf -->
 
 <!-- initialize all slides to no display -->
-<style>
+<!--<style>
 .mySlides1p1 {display: none}
-</style>
+</style>-->
+
+<script src="../assets/js/slideshow.js"></script>
 
 <!-- each slide show -->
 <div class="slideshow-container">
@@ -588,57 +590,18 @@ how data was procured)?</li>
   </div>
 
   <!-- (n, number of slide show) -->
-  <a class="prev" onclick="plusSlides(-1,0)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1,0)">&#10095;</a>
+  <a class="prev" onclick="showSlidesLib.plusSlides(-1,0)">&#10094;</a>
+  <a class="next" onclick="showSlidesLib.plusSlides(1,0)">&#10095;</a>
 </div>
 <p><br /></p>
-
-<p>stuff1</p>
 
 <!-- script for each slideshow -->
 <script>
 var slideIndex = [1,1];
 var slideId = ["mySlides1p1", "PLACEHOLDER"]
-//console.log(slideIndex, slideId);
-showSlides(1, 0);
-//showSlides(1, 1);
-
-//console.log('YO');
-
-function plusSlides(n, no) {
-  showSlides(slideIndex[no] += n, no);
-}
-
-function showSlides(n, no) {
-  var i;
-  var x = document.getElementsByClassName(slideId[no]);
-  if (n > x.length) {slideIndex[no] = 1}    
-  if (n < 1) {slideIndex[no] = x.length}
-  console.log('n=',n, 'no=', no, 'xlength =', x.length);
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";  
-  }
-  x[slideIndex[no]-1].style.display = "block";
-  
-  //var y = document.getElementsByClassName(slideId[no]);
-  //x[slideIndex[no]-1].contentDocument.location.reload();
-  
-  var y = document.getElementById('slide1');
-  console.log(y);
-  
-  //.location.reload();
-  //y.contentDocument.location.reload();
-  //document.getElementById('slide2').location.reload();
-  //contentDocument.location.reload();
-  //document.getElementById('slide3').location.reload();
-  //y.contentDocument.location.reload();
-  
-  
-  //x[slideIndex[no]-1].contentDocument.location.reload();
-  //x[1].style.display = "block";  
-  //var y = document.getElementsByClassName(slideId[no]);
-  //y[slideIndex[no]-1].style.display = "block";  
-}
+// order of last 2 is n, no -- no is the slideshow number for multiple slideshows
+showSlidesLib.init([slideIndex,slideId,1,0]);
+showSlidesLib.showSlides(1, 0);
 </script>
 
 <h2 id="tips-for-the-homework">Tips for the Homework</h2>

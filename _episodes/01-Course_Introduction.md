@@ -382,11 +382,11 @@ summary(after)
 <!-- also, for embed: https://stackoverflow.com/questions/2104608/hiding-the-toolbars-surrounding-an-embedded-pdf -->
 
 <!-- initialize all slides to no display -->
-<style>
+<!--<style>
 .mySlides1p1 {display: none}
-</style>
+</style>-->
 
-
+<script src="../assets/js/slideshow.js"></script>
 
 <!-- each slide show -->
 <div class="slideshow-container">
@@ -413,57 +413,21 @@ summary(after)
   </div>
 
   <!-- (n, number of slide show) -->
-  <a class="prev" onclick="plusSlides(-1,0)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1,0)">&#10095;</a>
+  <a class="prev" onclick="showSlidesLib.plusSlides(-1,0)">&#10094;</a>
+  <a class="next" onclick="showSlidesLib.plusSlides(1,0)">&#10095;</a>
 </div>
 <br>
 
-stuff1
+
+
 
 <!-- script for each slideshow -->
 <script>
 var slideIndex = [1,1];
 var slideId = ["mySlides1p1", "PLACEHOLDER"]
-//console.log(slideIndex, slideId);
-showSlides(1, 0);
-//showSlides(1, 1);
-
-//console.log('YO');
-
-function plusSlides(n, no) {
-  showSlides(slideIndex[no] += n, no);
-}
-
-function showSlides(n, no) {
-  var i;
-  var x = document.getElementsByClassName(slideId[no]);
-  if (n > x.length) {slideIndex[no] = 1}    
-  if (n < 1) {slideIndex[no] = x.length}
-  console.log('n=',n, 'no=', no, 'xlength =', x.length);
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";  
-  }
-  x[slideIndex[no]-1].style.display = "block";
-  
-  //var y = document.getElementsByClassName(slideId[no]);
-  //x[slideIndex[no]-1].contentDocument.location.reload();
-  
-  var y = document.getElementById('slide1');
-  console.log(y);
-  
-  //.location.reload();
-  //y.contentDocument.location.reload();
-  //document.getElementById('slide2').location.reload();
-  //contentDocument.location.reload();
-  //document.getElementById('slide3').location.reload();
-  //y.contentDocument.location.reload();
-  
-  
-  //x[slideIndex[no]-1].contentDocument.location.reload();
-  //x[1].style.display = "block";  
-  //var y = document.getElementsByClassName(slideId[no]);
-  //y[slideIndex[no]-1].style.display = "block";  
-}
+// order of last 2 is n, no -- no is the slideshow number for multiple slideshows
+showSlidesLib.init([slideIndex,slideId,1,0]);
+showSlidesLib.showSlides(1, 0);
 </script>
 
 
